@@ -73,6 +73,11 @@ def titre_dans_liste(titre_n: str, liste: list[str]) -> str | None:
     return None
 
 
+def cle_chaine(nom: str) -> str:
+    """Nom de chaîne comparable : « franceinfo: » = « Franceinfo », « BFM TV » = « BFMTV »."""
+    return re.sub(r"[^a-z0-9+]", "", norm(nom))
+
+
 # ---------------------------------------------------------------- dates XMLTV
 
 def date_xmltv(s: str | None) -> datetime | None:
@@ -174,6 +179,10 @@ class Detecteur:
         self.cat_pol = [norm(c) for c in f.get("categories_politiques", [])]
         self.cat_exc = [norm(c) for c in f.get("categories_exclues", [])]
         self.chaines_exc = {norm(c) for c in f.get("chaines_exclues", [])}
+        self.nationales = {cle_chaine(c) for c in f.get("chaines_nationales", [])}
+
+    def est_nationale(self, chaine: str) -> bool:
+        return not self.nationales or cle_chaine(chaine) in self.nationales
 
     def evaluer(self, titre: str, sous_titre: str, desc: str, categories: list[str], chaine: str):
         t, st, d = norm(titre), norm(sous_titre), norm(desc)
@@ -294,6 +303,7 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                     "resume": (desc[:420] + "…") if len(desc) > 420 else desc,
                     "categories": cats[:3],
                     "rediffusion": rediff,
+                    "nationale": det.est_nationale(chaine),
                     "score": score,
                     "raisons": raisons,
                 }
@@ -322,7 +332,7 @@ def main() -> int:
 
     plafond = int(filtres.get("nombre_maximum", 1500))
     if len(programmes) > plafond:  # garde-fou : on conserve les détections les plus sûres
-        programmes.sort(key=lambda p: -p["score"])
+        programmes.sort(key=lambda p: (not p["nationale"], -p["score"]))
         programmes = programmes[:plafond]
         print(f"Plafond atteint : {plafond} émissions conservées (filtres trop larges ?)", file=sys.stderr)
     programmes.sort(key=lambda p: (p["debut"], p["chaine"]))

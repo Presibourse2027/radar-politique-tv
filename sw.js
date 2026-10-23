@@ -1,5 +1,5 @@
 // Service worker : l'appli s'ouvre même sans réseau ; la grille est toujours demandée en ligne d'abord.
-const VERSION = 'rpt-v1';
+const VERSION = 'rpt-v2';
 const COQUILLE = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {

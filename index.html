@@ -234,6 +234,7 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
   <div class="grab"></div>
   <h2>Réglages</h2>
   <p class="lead" id="setInfo"></p>
+  <div class="switch"><span>Afficher aussi les autres chaînes<small>Locales, régionales et étrangères (plus de bruit)</small></span><input type="checkbox" id="sAutres"></div>
   <div class="switch"><span>Masquer les rediffusions<small>Quand la grille les signale comme telles</small></span><input type="checkbox" id="sRediff"></div>
   <div class="switch"><span>Masquer la nuit<small>Émissions commençant entre 0 h 30 et 6 h</small></span><input type="checkbox" id="sNuit"></div>
   <div class="field" style="margin-top:14px"><label for="sAgenda">Bouton « Agenda »</label><select id="sAgenda"><option value="google">Google Agenda (s'ouvre directement)</option><option value="ics">Fichier agenda .ics (Samsung Agenda)</option></select></div>
@@ -262,7 +263,7 @@ const LS = {
   set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch{ return false; } }
 };
 const K = { prefs:'rpt.prefs.v1', favs:'rpt.favoris.v1', manual:'rpt.ajouts.v1', cache:'rpt.grille.v1' };
-const prefs = Object.assign({ rediff:true, nuit:true, agenda:'google', rappel:15, theme:'auto', dataUrl:'' }, LS.get(K.prefs, {}));
+const prefs = Object.assign({ rediff:true, nuit:true, autres:false, agenda:'google', rappel:15, theme:'auto', dataUrl:'' }, LS.get(K.prefs, {}));
 let favoris = LS.get(K.favs, {});        // id -> instantané de l'émission
 let ajouts  = LS.get(K.manual, []);      // émissions saisies à la main
 let grille  = null;                      // contenu de programmes.json
@@ -373,6 +374,7 @@ function filtrer(liste, appliquerPrefs=true){
     if (filtreFormat && p.format !== filtreFormat) return false;
     if (filtreChaine && p.chaine !== filtreChaine) return false;
     if (appliquerPrefs && !favoris[p.id] && p._source !== 'manuel'){
+      if (!prefs.autres && p.nationale === false) return false;
       if (prefs.rediff && p.rediffusion) return false;
       if (prefs.nuit){ const d = new Date(p.debut), h = heureFR(d), m = minuteFR(d); if ((h === 0 && m >= 30) || (h >= 1 && h < 6)) return false; }
     }
@@ -458,7 +460,7 @@ function vide(titre, texte){ return `<div class="empty"><b>${esc(titre)}</b>${es
 
 function rendreChips(toutes){
   const formats = Object.keys(FORMATS).filter(f => toutes.some(p => p.format === f));
-  const chaines = [...new Set(toutes.map(p => p.chaine).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
+  const chaines = [...new Set(toutes.filter(p => prefs.autres || p.nationale !== false || favoris[p.id] || p._source === 'manuel').map(p => p.chaine).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
   if (filtreChaine && !chaines.includes(filtreChaine)) filtreChaine = '';
   $('#chips').innerHTML =
     `<button class="chip" data-fmt="" aria-pressed="${!filtreFormat}">Tout</button>` +
@@ -484,7 +486,7 @@ function rendreBandeaux(){
 function rendreStatut(){
   const s = $('#status');
   if (!grille || grille._erreur){ s.textContent = 'Grille non disponible'; return; }
-  const n = (grille.programmes||[]).filter(p => !passe(p)).length;
+  const n = (grille.programmes||[]).filter(p => !passe(p) && (prefs.autres || p.nationale !== false)).length;
   s.textContent = (grille.genereLe ? 'Grille du ' + fCourt.format(new Date(grille.genereLe)) + ' · ' : '') + n + ' émission' + (n>1?'s':'') + ' à venir';
 }
 
@@ -741,7 +743,7 @@ $('#fab').addEventListener('click', () => ouvrirAjout(null));
 
 /* ---------- Réglages */
 $('#btnSettings').addEventListener('click', () => {
-  $('#sRediff').checked = prefs.rediff; $('#sNuit').checked = prefs.nuit;
+  $('#sAutres').checked = prefs.autres; $('#sRediff').checked = prefs.rediff; $('#sNuit').checked = prefs.nuit;
   $('#sAgenda').value = prefs.agenda; $('#sRappel').value = String(prefs.rappel); $('#sTheme').value = prefs.theme;
   $('#sDataUrl').value = prefs.dataUrl || '';
   const g = grille && !grille._erreur
@@ -750,6 +752,7 @@ $('#btnSettings').addEventListener('click', () => {
   $('#setInfo').textContent = g + ` ${Object.keys(favoris).length} émission(s) suivie(s), ${ajouts.length} ajout(s) manuel(s).`;
   ouvrirFeuille('#sheetSettings');
 });
+$('#sAutres').addEventListener('change', e => { prefs.autres = e.target.checked; sauverPrefs(); rendre(); });
 $('#sRediff').addEventListener('change', e => { prefs.rediff = e.target.checked; sauverPrefs(); rendre(); });
 $('#sNuit').addEventListener('change', e => { prefs.nuit = e.target.checked; sauverPrefs(); rendre(); });
 $('#sAgenda').addEventListener('change', e => { prefs.agenda = e.target.value; sauverPrefs(); });
