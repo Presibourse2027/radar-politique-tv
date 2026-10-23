@@ -103,7 +103,15 @@ def iso(dt: datetime) -> str:
 
 # ---------------------------------------------------------------- classement
 
-def classer(titre_n: str, desc_n: str, chaine_n: str) -> str:
+RE_DOC = re.compile(r"\bdocumentaire|\bdoc\b|\bportrait\b|\bbiographie\b|\bbiopic\b")
+
+
+def est_documentaire(titre_n: str, desc_n: str, cats_n: list[str]) -> bool:
+    return any(c.startswith("doc") or "documentaire" in c for c in cats_n) or \
+        bool(RE_DOC.search(titre_n)) or bool(re.search(r"\b(ce |un )?documentaire\b|\bce portrait\b|\bce film\b", desc_n))
+
+
+def classer(titre_n: str, desc_n: str, chaine_n: str, doc: bool = False) -> str:
     tout = titre_n + " " + desc_n
     if re.search(r"questions (d'actualite )?au gouvernement|seance publique|hemicycle|"
                  r"commission d'enquete|audition", tout) or \
@@ -112,6 +120,8 @@ def classer(titre_n: str, desc_n: str, chaine_n: str) -> str:
         return "Parlement"
     if re.search(r"soiree electorale|resultats? (du|des|de l')|premier tour|second tour", titre_n):
         return "Soirée électorale"
+    if doc:
+        return "Documentaire"
     if re.search(r"debat|face.a.face|confrontation|duel", titre_n) or \
             re.search(r"\bdebat (entre|avec|presidentiel|televise)|face.a.face", desc_n):
         return "Débat"
@@ -176,6 +186,7 @@ class Detecteur:
         self.titres_exclus = motif(f.get("titres_exclus", []), pluriel=False)
         self.forts = motif(f.get("mots_forts", []))
         self.faibles = motif(f.get("mots_faibles", []))
+        self.personnes = motif(f.get("personnalites_politiques", []), pluriel=False)
         self.cat_pol = [norm(c) for c in f.get("categories_politiques", [])]
         self.cat_exc = [norm(c) for c in f.get("categories_exclues", [])]
         self.chaines_exc = {norm(c) for c in f.get("chaines_exclues", [])}
@@ -210,7 +221,21 @@ class Detecteur:
         if forts_desc:
             score += 2 * min(len(forts_desc), 3)
             raisons.append("résumé : " + ", ".join(forts_desc[:3]))
-        if forts_titre or forts_desc or cat_pol:
+        noms_titre = trouve(self.personnes, t + " " + st)
+        noms_desc = [m for m in trouve(self.personnes, d) if m not in noms_titre]
+        if re.search(r"porte-avions|aeroport|roissy", t + " " + d):  # « Charles-de-Gaulle » ≠ le Général
+            noms_titre = [m for m in noms_titre if "gaulle" not in m]
+            noms_desc = [m for m in noms_desc if "gaulle" not in m]
+        if noms_titre:
+            score += 5
+            raisons.append("personnalité : " + ", ".join(noms_titre[:3]))
+        elif noms_desc:
+            score += 3
+            raisons.append("personnalité citée : " + ", ".join(noms_desc[:3]))
+        if (forts_titre or forts_desc or noms_titre or noms_desc) and est_documentaire(t, d, cats):
+            score += 1
+            raisons.append("documentaire")
+        if forts_titre or forts_desc or cat_pol or noms_titre or noms_desc:
             faibles = trouve(self.faibles, t + " " + st + " " + d)
             if faibles:
                 score += min(len(faibles), 2)
@@ -297,7 +322,9 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                     "logo": icones_chaines.get(cid, ""),
                     "debut": iso(debut),
                     "fin": iso(fin) if fin else "",
-                    "format": classer(norm(titre + " " + sous_titre), norm(desc), norm(chaine)),
+                    "format": classer(norm(titre + " " + sous_titre), norm(desc), norm(chaine),
+                                      est_documentaire(norm(titre + " " + sous_titre), norm(desc),
+                                                       [norm(c) for c in cats])),
                     "invites": extraire_invites(el, desc),
                     "presentateurs": presentateurs(el),
                     "resume": (desc[:420] + "…") if len(desc) > 420 else desc,

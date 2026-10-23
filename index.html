@@ -15,21 +15,21 @@
   --bg:#f6f5f1; --surface:#ffffff; --surface2:#efede7; --line:#dedad1; --text:#191b24; --muted:#636777;
   --accent:#2f4bd8; --accent-ink:#ffffff; --accent-soft:#e3e8fd; --live:#d93a3a; --live-soft:#fde6e5;
   --ok:#17795a; --warn:#9a6200; --warn-soft:#fff2d6; --star:#d99a00;
-  --debat:#b8326a; --interview:#2f4bd8; --parlement:#0f7a71; --magazine:#6b5bb5; --soiree:#b85a12;
+  --debat:#b8326a; --interview:#2f4bd8; --parlement:#0f7a71; --magazine:#6b5bb5; --soiree:#b85a12; --doc:#5f6b2e;
   --radius:16px; --shadow:0 1px 2px rgba(20,24,43,.06),0 4px 14px rgba(20,24,43,.05);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f1220; --surface:#171b2c; --surface2:#1f2438; --line:#2b3150; --text:#eceef6; --muted:#9aa0b8;
   --accent:#8ea2ff; --accent-ink:#0f1220; --accent-soft:#252d52; --live:#ff6b6b; --live-soft:#3a1f27;
   --ok:#5fd0a6; --warn:#f2c26b; --warn-soft:#352b17; --star:#ffc542;
-  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66;
+  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a;
   --shadow:none;
 }}
 :root[data-theme="dark"]{
   --bg:#0f1220; --surface:#171b2c; --surface2:#1f2438; --line:#2b3150; --text:#eceef6; --muted:#9aa0b8;
   --accent:#8ea2ff; --accent-ink:#0f1220; --accent-soft:#252d52; --live:#ff6b6b; --live-soft:#3a1f27;
   --ok:#5fd0a6; --warn:#f2c26b; --warn-soft:#352b17; --star:#ffc542;
-  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66;
+  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a;
   --shadow:none;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -217,7 +217,7 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
     <div class="field"><label for="fChaine">Chaîne *</label><input id="fChaine" required maxlength="60" list="chainesList" placeholder="Ex. France 2"><datalist id="chainesList"></datalist></div>
     <div class="row2">
       <div class="field"><label for="fDate">Date *</label><input id="fDate" type="date" required></div>
-      <div class="field"><label for="fFormat">Format</label><select id="fFormat"><option>Débat</option><option>Interview</option><option>Magazine politique</option><option>Parlement</option><option>Soirée électorale</option></select></div>
+      <div class="field"><label for="fFormat">Format</label><select id="fFormat"><option>Débat</option><option>Interview</option><option>Magazine politique</option><option>Parlement</option><option>Documentaire</option><option>Soirée électorale</option></select></div>
     </div>
     <div class="row2">
       <div class="field"><label for="fDebut">Début *</label><input id="fDebut" type="time" required></div>
@@ -274,6 +274,7 @@ const FORMATS = {
   'Interview':         {c:'--interview', court:'Interviews'},
   'Parlement':         {c:'--parlement', court:'Parlement'},
   'Magazine politique':{c:'--magazine',  court:'Magazines'},
+  'Documentaire':      {c:'--doc',       court:'Documentaires'},
   'Soirée électorale': {c:'--soiree',    court:'Soirées électorales'}
 };
 
