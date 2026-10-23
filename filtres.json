@@ -1,0 +1,89 @@
+{
+  "_aide": "Fichier modifiable sans toucher au code. Les textes sont comparés sans tenir compte des majuscules ni des accents. Après modification, le robot se relance automatiquement.",
+
+  "sources_xmltv": [
+    "https://xmltvfr.fr/xmltv/xmltv_fr.xml.gz",
+    "https://xmltvfr.fr/xmltv/xmltv.xml.gz",
+    "https://xmltvfr.fr/xmltv/xmltv_tnt.xml.gz"
+  ],
+
+  "jours_passes": 2,
+  "jours_a_venir": 8,
+  "seuil_detection": 4,
+  "nombre_maximum": 1500,
+
+  "titres_toujours_retenus": [
+    "questions au gouvernement",
+    "questions d'actualite au gouvernement",
+    "seance publique",
+    "debat presidentiel",
+    "debat de l'entre-deux-tours",
+    "election presidentielle",
+    "presidentielle 2027",
+    "soiree electorale",
+    "le grand jury",
+    "les 4 verites",
+    "les quatre verites",
+    "l'evenement",
+    "dimanche en politique",
+    "questions politiques",
+    "c politique",
+    "c dans l'air",
+    "bfm politique",
+    "face a face",
+    "le face-a-face",
+    "le grand rendez-vous",
+    "punchline",
+    "face a l'info",
+    "l'heure des pros",
+    "en toute franchise",
+    "ca vous regarde",
+    "bourbon express",
+    "sens public",
+    "bonjour chez vous",
+    "les informes",
+    "l'invite politique",
+    "l'invite de",
+    "elysee 2027",
+    "france politique",
+    "les grandes gueules",
+    "24h pujadas",
+    "rochebin"
+  ],
+
+  "mots_forts": [
+    "debat", "presidentielle", "candidat", "candidate", "candidature",
+    "election", "electoral", "campagne", "meeting", "politique",
+    "gouvernement", "premier ministre", "ministre", "president de la republique",
+    "elysee", "matignon", "depute", "deputee", "senateur", "senatrice",
+    "assemblee nationale", "senat", "parlement", "hemicycle",
+    "parti", "porte-parole", "programme presidentiel", "sondage",
+    "face-a-face", "face a face", "grand oral", "investiture", "primaire"
+  ],
+
+  "mots_faibles": [
+    "invite", "invitee", "invites", "interview", "entretien", "plateau",
+    "editorialiste", "chroniqueur", "actualite", "decryptage", "analyse"
+  ],
+
+  "categories_politiques": [
+    "politique", "debat", "magazine politique", "magazine d'actualite",
+    "parlementaire", "election", "talk-show politique"
+  ],
+
+  "categories_exclues": [
+    "film", "telefilm", "serie", "feuilleton", "dessin anime", "animation",
+    "jeunesse", "sport", "football", "rugby", "tennis", "cyclisme",
+    "jeu", "divertissement", "musique", "clip", "concert", "cuisine",
+    "telerealite", "meteo", "theatre", "spectacle", "documentaire animalier",
+    "televente", "religion"
+  ],
+
+  "titres_exclus": [
+    "journal", "jt", "le 13h", "le 20h", "13 heures", "20 heures", "19/20",
+    "12/13", "soir 3", "meteo", "telematin", "flash", "le fil info",
+    "teleachat", "programmes de la nuit", "fin des programmes"
+  ],
+
+  "chaines_exclues": []
+}
