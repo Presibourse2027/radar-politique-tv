@@ -15,21 +15,21 @@
   --bg:#f6f5f1; --surface:#ffffff; --surface2:#efede7; --line:#dedad1; --text:#191b24; --muted:#636777;
   --accent:#2f4bd8; --accent-ink:#ffffff; --accent-soft:#e3e8fd; --live:#d93a3a; --live-soft:#fde6e5;
   --ok:#17795a; --warn:#9a6200; --warn-soft:#fff2d6; --star:#d99a00;
-  --debat:#b8326a; --interview:#2f4bd8; --parlement:#0f7a71; --magazine:#6b5bb5; --soiree:#b85a12; --doc:#5f6b2e;
+  --debat:#b8326a; --interview:#2f4bd8; --parlement:#0f7a71; --magazine:#6b5bb5; --soiree:#b85a12; --doc:#5f6b2e; --plateau:#8a4b9c;
   --radius:16px; --shadow:0 1px 2px rgba(20,24,43,.06),0 4px 14px rgba(20,24,43,.05);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f1220; --surface:#171b2c; --surface2:#1f2438; --line:#2b3150; --text:#eceef6; --muted:#9aa0b8;
   --accent:#8ea2ff; --accent-ink:#0f1220; --accent-soft:#252d52; --live:#ff6b6b; --live-soft:#3a1f27;
   --ok:#5fd0a6; --warn:#f2c26b; --warn-soft:#352b17; --star:#ffc542;
-  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a;
+  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a; --plateau:#e3a6f2;
   --shadow:none;
 }}
 :root[data-theme="dark"]{
   --bg:#0f1220; --surface:#171b2c; --surface2:#1f2438; --line:#2b3150; --text:#eceef6; --muted:#9aa0b8;
   --accent:#8ea2ff; --accent-ink:#0f1220; --accent-soft:#252d52; --live:#ff6b6b; --live-soft:#3a1f27;
   --ok:#5fd0a6; --warn:#f2c26b; --warn-soft:#352b17; --star:#ffc542;
-  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a;
+  --debat:#ff7fae; --interview:#8ea2ff; --parlement:#4fd1c5; --magazine:#b6a8ff; --soiree:#ffaa66; --doc:#c2d47a; --plateau:#e3a6f2;
   --shadow:none;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -67,6 +67,7 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 9
 .banner{margin:14px 0 0;padding:12px 14px;border-radius:12px;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
 .banner.warn{background:var(--warn-soft);color:var(--warn)}
 .banner.info{background:var(--accent-soft);color:var(--text)}
+.banner svg{width:20px;height:20px;flex:none;margin-top:1px}
 .banner button{text-decoration:underline;color:inherit;padding:0;font-weight:600}
 
 /* Direct */
@@ -120,7 +121,7 @@ header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 9
 
 /* Barre du bas */
 nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
-nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 .tab{height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;color:var(--muted);position:relative}
 .tab svg{width:23px;height:23px}
 .tab[aria-selected="true"]{color:var(--accent);font-weight:700}
@@ -158,6 +159,9 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
 .toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:60;opacity:0;transition:.2s;pointer-events:none;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translateX(-50%)}
 .hidden{display:none!important}
+.srcbtn{font-size:12px;color:var(--accent);padding:0;font-weight:600}
+.guests.annonce b{color:var(--ok)}
+.tab{font-size:10.5px}
 @media (min-width:700px){.card{grid-template-columns:70px 1fr}}
 </style>
 </head>
@@ -193,7 +197,8 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
 <nav class="tabs" aria-label="Sections"><div class="in" role="tablist">
   <button class="tab" role="tab" data-view="avenir" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>À venir</button>
   <button class="tab" role="tab" data-view="direct" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>Direct<span class="badge hidden" id="liveBadge"></span></button>
-  <button class="tab" role="tab" data-view="favoris" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Mes émissions</button>
+  <button class="tab" role="tab" data-view="favoris" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Suivies</button>
+  <button class="tab" role="tab" data-view="annonces" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 0 0 1 1h2l5 4V5L6 9H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>Annonces<span class="badge hidden" id="annBadge"></span></button>
   <button class="tab" role="tab" data-view="passe" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg>Replays</button>
 </div></nav>
 
@@ -217,7 +222,7 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
     <div class="field"><label for="fChaine">Chaîne *</label><input id="fChaine" required maxlength="60" list="chainesList" placeholder="Ex. France 2"><datalist id="chainesList"></datalist></div>
     <div class="row2">
       <div class="field"><label for="fDate">Date *</label><input id="fDate" type="date" required></div>
-      <div class="field"><label for="fFormat">Format</label><select id="fFormat"><option>Débat</option><option>Interview</option><option>Magazine politique</option><option>Parlement</option><option>Documentaire</option><option>Soirée électorale</option></select></div>
+      <div class="field"><label for="fFormat">Format</label><select id="fFormat"><option>Débat</option><option>Interview</option><option>Magazine politique</option><option>Parlement</option><option>Plateau info</option><option>Documentaire</option><option>Soirée électorale</option></select></div>
     </div>
     <div class="row2">
       <div class="field"><label for="fDebut">Début *</label><input id="fDebut" type="time" required></div>
@@ -274,6 +279,7 @@ const FORMATS = {
   'Interview':         {c:'--interview', court:'Interviews'},
   'Parlement':         {c:'--parlement', court:'Parlement'},
   'Magazine politique':{c:'--magazine',  court:'Magazines'},
+  'Plateau info':      {c:'--plateau',   court:'Plateaux info'},
   'Documentaire':      {c:'--doc',       court:'Documentaires'},
   'Soirée électorale': {c:'--soiree',    court:'Soirées électorales'}
 };
@@ -380,7 +386,7 @@ function filtrer(liste, appliquerPrefs=true){
       if (prefs.nuit){ const d = new Date(p.debut), h = heureFR(d), m = minuteFR(d); if ((h === 0 && m >= 30) || (h >= 1 && h < 6)) return false; }
     }
     if (q){
-      const t = norm([p.titre, p.sousTitre, p.chaine, p.format, ...(p.invites||[]), ...(p.presentateurs||[]), p.resume].join(' '));
+      const t = norm([p.titre, p.sousTitre, p.chaine, p.format, ...(p.invites||[]), ...(p.invitesAnnonces||[]), ...(p.presentateurs||[]), p.resume].join(' '));
       if (!q.split(/\s+/).every(m => t.includes(m))) return false;
     }
     return true;
@@ -409,7 +415,9 @@ function carte(p){
   const fav = !!favoris[p.id];
   const inv = (p.invites||[]).length
     ? `<div class="guests"><b>Invités :</b> ${esc(p.invites.join(', '))} ${p._source==='manuel' ? '' : '<em>· selon la grille</em>'}</div>` : '';
-  const pres = !inv && (p.presentateurs||[]).length ? `<div class="guests"><em>Présenté par ${esc(p.presentateurs.join(', '))}</em></div>` : '';
+  const ann = (p.invitesAnnonces||[]).length && (p.annonces||[]).length
+    ? `<div class="guests annonce"><b>Annoncé${p.invitesAnnonces.length>1?'s':''} :</b> ${esc(p.invitesAnnonces.join(', '))} <button class="srcbtn" data-act="lien" data-url="${esc(p.annonces[0].lien)}">${esc(p.annonces[0].source)} ↗</button></div>` : '';
+  const pres = !inv && !ann && (p.presentateurs||[]).length ? `<div class="guests"><em>Présenté par ${esc(p.presentateurs.join(', '))}</em></div>` : '';
   const tags = [
     live ? '<span class="tag live">En direct</span>' : '',
     p.rediffusion ? '<span class="tag">Rediffusion</span>' : '',
@@ -426,7 +434,7 @@ function carte(p){
       <div class="top"><span class="channel">${esc(p.chaine)}</span><span class="fmt" style="--c:var(${f.c})">${esc(p.format||'Magazine politique')}</span>${tags}</div>
       <h3>${esc(p.titre)}</h3>
       ${p.sousTitre ? `<div class="sub">${esc(p.sousTitre)}</div>` : ''}
-      ${inv}${pres}
+      ${inv}${ann}${pres}
       ${p.resume ? `<div class="resume" data-act="deplier">${esc(p.resume)}</div>` : ''}
       <div class="actions">
         <button class="act fav" data-act="fav" data-id="${esc(p.id)}" aria-pressed="${fav}">${ICON.star}${fav?'Suivie':'Suivre'}</button>
@@ -507,7 +515,7 @@ function rendre(){
     $('#liveRow').innerHTML = lives.map(p => {
       const t0 = new Date(p.debut).getTime(), t1 = finEstimee(p).getTime();
       const pct = Math.max(2, Math.min(100, (now - t0) / (t1 - t0) * 100));
-      return `<button class="livecard" data-act="site" data-id="${esc(p.id)}"><span class="livetag">${esc(p.chaine)}</span><h3>${esc(p.titre)}</h3><div class="sub">jusqu’à ${esc(fHeure.format(finEstimee(p)))}${(p.invites||[]).length ? ' · ' + esc(p.invites.slice(0,2).join(', ')) : ''}</div><div class="bar"><i style="width:${pct.toFixed(0)}%"></i></div></button>`;
+      return `<button class="livecard" data-act="site" data-id="${esc(p.id)}"><span class="livetag">${esc(p.chaine)}</span><h3>${esc(p.titre)}</h3><div class="sub">jusqu’à ${esc(fHeure.format(finEstimee(p)))}${[...(p.invites||[]), ...(p.invitesAnnonces||[])].length ? ' · ' + esc([...(p.invites||[]), ...(p.invitesAnnonces||[])].slice(0,2).join(', ')) : ''}</div><div class="bar"><i style="width:${pct.toFixed(0)}%"></i></div></button>`;
     }).join('');
   } else ls.classList.add('hidden');
 
@@ -526,12 +534,57 @@ function rendre(){
       ? (fut.length ? `<div class="sec"><h2>Prochainement</h2><span class="count">${fut.length}</span></div>` + listeParJour(fut) : '')
         + (pas.length ? `<div class="sec"><h2>Déjà diffusées</h2><span class="count">${pas.length}</span></div>` + listeParJour(pas, true) : '')
       : vide('Aucune émission suivie', 'Touchez « Suivre » sur une émission pour la retrouver ici, même après sa diffusion.');
+  } else if (vue === 'annonces'){
+    html = rendreAnnonces(now);
   } else if (vue === 'passe'){
     const items = filtrer(toutes.filter(p => passe(p, now) && now - finEstimee(p).getTime() < 7*864e5));
     html = items.length ? listeParJour(items, true) : vide('Aucune émission récente', 'Les émissions des deux derniers jours apparaissent ici avec un accès au replay.');
   }
   $('#list').innerHTML = html;
+  majBadgeAnnonces();
   ajusterEntete();
+}
+
+/* ---------- Annonces (presse, Bluesky) */
+const K_ANN_VU = 'rpt.annonces.vu';
+function annoncesFiltrees(){
+  const q = norm(recherche.trim());
+  return (grille?.annonces || []).filter(a => {
+    if (filtreChaine && a.chaine !== filtreChaine) return false;
+    if (!q) return true;
+    const t = norm([a.texte, a.chaine, a.source, a.emissionTitre, ...(a.personnes||[])].join(' '));
+    return q.split(/\s+/).every(m => t.includes(m));
+  });
+}
+function depuis(iso){
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  if (m < 60) return 'il y a ' + Math.max(1, m) + ' min';
+  if (m < 1440) return 'il y a ' + Math.round(m/60) + ' h';
+  return fCourt.format(new Date(iso));
+}
+function rendreAnnonces(now){
+  const liste = annoncesFiltrees();
+  LS.set(K_ANN_VU, Date.now());
+  const intro = `<div class="banner info">${ICON.info}<div>Annonces d’invités repérées dans la presse et sur Bluesky. Ce sont des pistes à confirmer : X (Twitter), Instagram et Facebook ne sont pas consultables gratuitement.</div></div>`;
+  if (!liste.length) return intro + vide('Aucune annonce pour l’instant', grille?.annoncesInfo?.erreur ? 'La recherche d’annonces a échoué lors de la dernière collecte.' : 'Les annonces des trois derniers jours apparaîtront ici.');
+  return intro + `<div class="sec"><h2>Dernières annonces</h2><span class="count">${liste.length}</span></div>` + liste.map(a => {
+    const p = a.emissionId ? trouver(a.emissionId) : null;
+    const lienEm = p ? `<button class="act" data-act="menu" data-id="${esc(p.id)}">${ICON.cal}${esc(p.titre)} · ${esc(fCourt.format(new Date(p.debut)))}</button>` : '';
+    const fav = p ? `<button class="act fav" data-act="fav" data-id="${esc(p.id)}" aria-pressed="${!!favoris[p.id]}">${ICON.star}${favoris[p.id]?'Suivie':'Suivre'}</button>` : '';
+    return `<article class="card ann">
+      <div class="body" style="grid-column:1/-1">
+        <div class="top"><span class="channel">${esc(a.chaine||'')}</span><span class="tag">${esc(a.source)}</span><span class="sub" style="font-size:12px">${esc(depuis(a.date))}</span></div>
+        <h3 style="font-size:15.5px;font-weight:600">${esc(a.texte)}</h3>
+        ${(a.personnes||[]).length ? `<div class="guests"><b>Personnalités :</b> ${esc(a.personnes.join(', '))}</div>` : ''}
+        ${p ? '' : `<div class="guests"><em>Émission non identifiée dans la grille${a.chaine ? ' (' + esc(a.chaine) + ')' : ''}</em></div>`}
+        <div class="actions">${fav}${lienEm}<button class="act" data-act="lien" data-url="${esc(a.lien)}">${ICON.globe}Source</button></div>
+      </div></article>`;
+  }).join('');
+}
+function majBadgeAnnonces(){
+  const vu = LS.get(K_ANN_VU, 0), b = $('#annBadge');
+  const n = (grille?.annonces || []).filter(a => new Date(a.date).getTime() > vu && Date.now() - new Date(a.date) < 864e5).length;
+  b.textContent = n > 99 ? '99+' : n; b.classList.toggle('hidden', !n || vue === 'annonces');
 }
 
 function ajusterEntete(){ document.documentElement.style.setProperty('--headh', $('#header').offsetHeight + 'px'); }
@@ -728,6 +781,7 @@ document.addEventListener('click', e => {
     case 'deplier': el.classList.toggle('open'); break;
     case 'plus': limite += 60; rendre(); break;
     case 'reload': chargerGrille(true); break;
+    case 'lien': ouvrir(el.dataset.url); break;
   }
 });
 document.addEventListener('change', e => { if (e.target.id === 'selChaine'){ filtreChaine = e.target.value; limite = 60; rendre(); } });
@@ -750,7 +804,9 @@ $('#btnSettings').addEventListener('click', () => {
   const g = grille && !grille._erreur
     ? `Grille : ${grille.nombre ?? (grille.programmes||[]).length} émissions politiques retenues sur ${grille.programmesAnalyses ?? '?'} programmes de ${grille.chainesAnalysees ?? '?'} chaînes.`
     : 'Grille non chargée.';
-  $('#setInfo').textContent = g + ` ${Object.keys(favoris).length} émission(s) suivie(s), ${ajouts.length} ajout(s) manuel(s).`;
+  const ai = grille?.annoncesInfo;
+  const annTxt = ai ? ` Annonces : ${ai.retenues ?? 0} retenues sur ${ai.bruts ?? 0} articles et messages lus${(ai.comptesBluesky||[]).length ? ', comptes Bluesky suivis : ' + ai.comptesBluesky.length : ''}.` : '';
+  $('#setInfo').textContent = g + annTxt + ` ${Object.keys(favoris).length} émission(s) suivie(s), ${ajouts.length} ajout(s) manuel(s).`;
   ouvrirFeuille('#sheetSettings');
 });
 $('#sAutres').addEventListener('change', e => { prefs.autres = e.target.checked; sauverPrefs(); rendre(); });

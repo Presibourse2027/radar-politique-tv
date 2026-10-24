@@ -27,6 +27,13 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from collections import Counter, defaultdict
+
+try:
+    from zoneinfo import ZoneInfo
+    PARIS = ZoneInfo("Europe/Paris")
+except Exception:  # noqa: BLE001
+    PARIS = timezone(timedelta(hours=1))
 
 RACINE = Path(__file__).resolve().parent
 FICHIER_FILTRES = RACINE / "filtres.json"
@@ -191,6 +198,30 @@ class Detecteur:
         self.cat_exc = [norm(c) for c in f.get("categories_exclues", [])]
         self.chaines_exc = {norm(c) for c in f.get("chaines_exclues", [])}
         self.nationales = {cle_chaine(c) for c in f.get("chaines_nationales", [])}
+        self.info = {cle_chaine(c) for c in f.get("chaines_info", [])}
+        self.exclus_info = motif(f.get("titres_exclus_chaines_info", []), pluriel=False)
+        self.duree_min_info = int(f.get("duree_minimum_plateau_minutes", 20))
+
+    def est_chaine_info(self, chaine: str) -> bool:
+        return cle_chaine(chaine) in self.info
+
+    def plateau_info(self, titre: str, desc: str, categories: list[str], chaine: str,
+                     debut: datetime, fin: datetime | None) -> bool:
+        """Émission de plateau d'une chaîne d'info (débats d'actualité aux titres génériques)."""
+        if not self.est_chaine_info(chaine):
+            return False
+        h = debut.astimezone(PARIS).hour
+        if h < 6:
+            return False
+        if fin and (fin - debut) < timedelta(minutes=self.duree_min_info):
+            return False
+        t = norm(titre)
+        cats = [norm(c) for c in categories]
+        if any(any(x == c or c.startswith(x + " ") for x in self.cat_exc) for c in cats):
+            return False
+        if trouve(self.titres_exclus, t) or trouve(self.exclus_info, t):
+            return False
+        return True
 
     def est_nationale(self, chaine: str) -> bool:
         return not self.nationales or cle_chaine(chaine) in self.nationales
@@ -281,6 +312,8 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
     noms_chaines: dict[str, str] = {}
     icones_chaines: dict[str, str] = {}
     retenus: dict[str, dict] = {}
+    inventaire: dict[str, Counter] = defaultdict(Counter)
+    inventaire_retenu: set[tuple[str, str]] = set()
     total = 0
 
     for _evt, el in ET.iterparse(flux, events=("end",)):
@@ -307,10 +340,24 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                 cats = [c.text.strip() for c in el.findall("category") if c.text]
                 cid = el.get("channel") or ""
                 chaine = noms_chaines.get(cid, cid)
+                info = det.est_chaine_info(chaine)
+                if info and debut >= maintenant - timedelta(hours=12):
+                    inventaire[chaine][titre] += 1
                 res = det.evaluer(titre, sous_titre, desc, cats, chaine)
+                plateau = False
+                if not res and det.plateau_info(titre, desc, cats, chaine, debut, fin):
+                    res = (det.seuil, ["plateau de chaîne info"])
+                    plateau = True
                 if not res:
                     continue
                 score, raisons = res
+                if info:
+                    inventaire_retenu.add((chaine, titre))
+                fmt = classer(norm(titre + " " + sous_titre), norm(desc), norm(chaine),
+                              est_documentaire(norm(titre + " " + sous_titre), norm(desc),
+                                               [norm(c) for c in cats]))
+                if plateau and fmt == "Magazine politique":
+                    fmt = "Plateau info"
                 rediff = el.find("previously-shown") is not None or \
                     bool(re.search(r"\brediffusion\b|\(r\)$", norm(titre + " " + sous_titre)))
                 cle = hashlib.sha1(f"{cid}|{iso(debut)}|{norm(titre)}".encode()).hexdigest()[:16]
@@ -322,9 +369,7 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                     "logo": icones_chaines.get(cid, ""),
                     "debut": iso(debut),
                     "fin": iso(fin) if fin else "",
-                    "format": classer(norm(titre + " " + sous_titre), norm(desc), norm(chaine),
-                                      est_documentaire(norm(titre + " " + sous_titre), norm(desc),
-                                                       [norm(c) for c in cats])),
+                    "format": fmt,
                     "invites": extraire_invites(el, desc),
                     "presentateurs": presentateurs(el),
                     "resume": (desc[:420] + "…") if len(desc) > 420 else desc,
@@ -336,7 +381,9 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                 }
             finally:
                 el.clear()
-    return list(retenus.values()), total, len(noms_chaines)
+    inv = {ch: [[t, n, (ch, t) in inventaire_retenu] for t, n in c.most_common()]
+           for ch, c in sorted(inventaire.items())}
+    return list(retenus.values()), total, len(noms_chaines), inv
 
 
 # ---------------------------------------------------------------- principal
@@ -345,12 +392,13 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fichier", help="fichier XMLTV local (.xml ou .xml.gz) pour tester")
     ap.add_argument("--sortie", default=str(FICHIER_SORTIE))
+    ap.add_argument("--annonces", help="dossier de flux d'annonces locaux (tests)")
     args = ap.parse_args()
 
     filtres = json.loads(FICHIER_FILTRES.read_text(encoding="utf-8"))
     det = Detecteur(filtres)
     flux, source = ouvrir_source(filtres.get("sources_xmltv", []), args.fichier)
-    programmes, total, nb_chaines = collecter(
+    programmes, total, nb_chaines, inventaire = collecter(
         flux, det, int(filtres.get("jours_passes", 2)), int(filtres.get("jours_a_venir", 8)))
 
     if total == 0:
@@ -371,7 +419,16 @@ def main() -> int:
         "chainesAnalysees": nb_chaines,
         "nombre": len(programmes),
         "programmes": programmes,
+        "inventaireChainesInfo": inventaire,
     }
+    # Annonces d'invités (presse, Bluesky) : facultatif, ne bloque jamais la collecte
+    if not args.fichier or args.annonces:
+        try:
+            import annonces
+            sortie["annonces"], sortie["annoncesInfo"] = annonces.collecter(filtres, programmes, args.annonces)
+        except Exception as e:  # noqa: BLE001
+            print(f"Annonces indisponibles : {e}", file=sys.stderr)
+            sortie["annonces"], sortie["annoncesInfo"] = [], {"erreur": str(e)}
     chemin = Path(args.sortie)
     chemin.parent.mkdir(parents=True, exist_ok=True)
     chemin.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
