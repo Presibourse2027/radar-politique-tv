@@ -573,7 +573,7 @@ function rendreAnnonces(now){
     const fav = p ? `<button class="act fav" data-act="fav" data-id="${esc(p.id)}" aria-pressed="${!!favoris[p.id]}">${ICON.star}${favoris[p.id]?'Suivie':'Suivre'}</button>` : '';
     return `<article class="card ann">
       <div class="body" style="grid-column:1/-1">
-        <div class="top"><span class="channel">${esc(a.chaine||'')}</span><span class="tag">${esc(a.source)}</span><span class="sub" style="font-size:12px">${esc(depuis(a.date))}</span></div>
+        <div class="top"><span class="channel">${esc(a.chaine||'')}</span><span class="tag">${esc(a.source)}</span>${a.annulation ? '<span class="tag live">Annulation / report</span>' : ''}<span class="sub" style="font-size:12px">${esc(depuis(a.date))}</span></div>
         <h3 style="font-size:15.5px;font-weight:600">${esc(a.texte)}</h3>
         ${(a.personnes||[]).length ? `<div class="guests"><b>Personnalités :</b> ${esc(a.personnes.join(', '))}</div>` : ''}
         ${p ? '' : `<div class="guests"><em>Émission non identifiée dans la grille${a.chaine ? ' (' + esc(a.chaine) + ')' : ''}</em></div>`}

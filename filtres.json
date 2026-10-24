@@ -54,7 +54,7 @@
     "Franceinfo TV",
     "La Chaîne Info"
   ],
-  "_aide_chaines_info": "Chaînes d'info en continu : leurs émissions de plateau (6 h - minuit, 20 min et plus, hors journaux) sont retenues même sans mot politique, au format « Plateau info ».",
+  "_aide_chaines_info": "Chaînes d'info en continu : leurs émissions de plateau (6 h - minuit, 20 min et plus, hors journaux et directs en continu) sont retenues même sans mot politique, au format « Plateau info ». LCP, Public Sénat, France 24 et i24 sont traitées par mots-clés.",
   "chaines_info": [
     "BFM TV",
     "BFMTV",
@@ -63,11 +63,7 @@
     "CNews",
     "franceinfo",
     "franceinfo:",
-    "Franceinfo TV",
-    "i24 news",
-    "LCP",
-    "Public Sénat",
-    "France 24"
+    "Franceinfo TV"
   ],
   "duree_minimum_plateau_minutes": 20,
   "titres_exclus_chaines_info": [
@@ -112,7 +108,29 @@
     "rediffusion",
     "best of",
     "teleachat",
-    "publi"
+    "publi",
+    "direct",
+    "non stop",
+    "non-stop",
+    "live",
+    "nuit",
+    "info",
+    "edition",
+    "affaire suivante",
+    "histoires criminelles",
+    "police justice",
+    "dr milhau",
+    "en quete d'esprit",
+    "lumieres orthodoxes",
+    "selection",
+    "ephemeride",
+    "previsions",
+    "livres",
+    "version originale",
+    "sourire",
+    "france 24",
+    "ecoute du monde",
+    "belles figures"
   ],
   "titres_toujours_retenus": [
     "questions au gouvernement",
@@ -435,10 +453,6 @@
       "Horizons",
       "Parti communiste français"
     ],
-    "bluesky_recherches": [
-      "\"sera l'invité\"",
-      "\"sera l'invitée\"",
-      "\"invité ce soir\""
-    ]
+    "bluesky_recherches": []
   }
 }

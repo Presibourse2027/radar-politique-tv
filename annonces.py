@@ -56,8 +56,10 @@ ALIAS_CHAINES = [
 ALIAS_RE = [(re.compile(r), cles, nom) for r, cles, nom in ALIAS_CHAINES]
 
 RE_ANNONCE = re.compile(
-    r"invite|recoit|recevra|face a|debat|sera (sur|dans|au|a|l')|en direct (sur|de|du|dans)|"
-    r"a suivre|ce soir|ce matin|demain|des \d|a \d{1,2} ?h|plateau|interview|entretien|repondra")
+    r"\binvite|\brecoit\b|\brecevra\b|\bface a\b|\bdebat|\bconfrontation\b|\bplateau\b|"
+    r"\binterview|\bentretien\b|\brepondra\b|\bgrand oral\b|\bsera (sur|dans le|dans l')")
+# Annonces d'annulation : listées mais jamais rattachées à une émission comme « invité annoncé »
+RE_ANNULE = re.compile(r"deprogramm|\bannul|\breport|\brenonce|\bboycott|\bdesiste")
 MAJ = "A-ZÉÈÊÀÂÎÔÛÇ"
 RE_NOM_INVITE = re.compile(
     rf"([{MAJ}][a-zéèêëàâîïôöûüç'’\-]+(?:\s+(?:de |du |d'|le |la )?[{MAJ}][\w'’\-]+){{1,2}})"
@@ -299,8 +301,9 @@ def collecter(filtres: dict, programmes: list[dict], dossier_test: str | None = 
             continue
         chaines = an.chaines(tn)
         personnes = an.personnes(tout, tn)
+        annule = bool(RE_ANNULE.search(tn))
         p = None
-        for cles, _nom in chaines:
+        for cles, _nom in ([] if annule else chaines):
             p = an.emission(cles, tn, it["date"])
             if p:
                 break
@@ -319,6 +322,7 @@ def collecter(filtres: dict, programmes: list[dict], dossier_test: str | None = 
             "emissionId": p["id"] if p else "",
             "emissionTitre": p["titre"] if p else "",
             "emissionDebut": p["debut"] if p else "",
+            "annulation": annule,
         }
         annonces.append(a)
         if p and personnes:
