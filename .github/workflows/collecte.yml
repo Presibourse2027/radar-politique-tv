@@ -2,13 +2,13 @@ name: Collecte des émissions politiques
 
 on:
   schedule:
-    - cron: "17 4 * * *"
-    - cron: "47 13 * * *"
+    - cron: "17 3-21/2 * * *"
   workflow_dispatch: {}
   push:
     paths:
       - "filtres.json"
       - "collect.py"
+      - "annonces.py"
 
 permissions:
   contents: write
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Collecter la grille TV et filtrer les émissions politiques
+      - name: Collecter la grille TV, les annonces et filtrer
         run: python3 collect.py
 
       - name: Publier le résultat
@@ -36,5 +36,6 @@ jobs:
             echo "Aucun changement."
           else
             git commit -m "Grille du $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase
             git push
           fi
