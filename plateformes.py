@@ -173,11 +173,14 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                     chaine = nom
                     break
             res = det.evaluer(titre, "", desc[:500], [], chaine)
+            theme = ""
             if not res:
-                continue
-            score, raisons = res
+                theme = det.theme_documentaire(titre, "", desc[:500], [], chaine, 0)
+                if not theme:
+                    continue
+            score, raisons = res if res else (0, ["documentaire"])
             tn, dn = norm(titre), norm(desc)
-            fmt = classer(tn, dn, norm(chaine), est_documentaire(tn + " " + norm(loc), dn, []))
+            fmt = classer(tn, dn, norm(chaine), est_documentaire(tn + " " + norm(loc), dn, [])) if res else "Documentaire"
             if fmt == "Magazine politique" and site.get("format_defaut"):
                 fmt = site["format_defaut"]
             noms = trouve(det.personnes, tn + " " + dn)
@@ -197,6 +200,8 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                 "score": score,
                 "raisons": raisons,
                 "plateforme": site["plateforme"],
+                "section": "politique" if res else "documentaire",
+                "theme": theme,
             })
             n_ok += 1
             if len(info["exemples"]) < 4:

@@ -1141,7 +1141,21 @@
         ],
         "motif_url": "m6\\.fr/.+-(p|c)_\\d+",
         "integrales": true,
-        "actif": false
+        "actif": true
+      },
+      {
+        "plateforme": "W9 Replay",
+        "nom": "W9",
+        "racine": "https://www.w9.fr",
+        "mots_sitemap": [
+          "video",
+          "replay",
+          "programme"
+        ],
+        "motif_url": "w9\\.fr/.+",
+        "integrales": false,
+        "max_sitemaps": 6,
+        "max_resultats": 150
       }
     ]
   }
