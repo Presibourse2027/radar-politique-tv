@@ -990,8 +990,9 @@
         "motif_url": "bfmtv\\.com/(politique/|replay|emissions?/)",
         "exclure_url": "/(sport|tech|people|economie|crypto|meteo|auto)/",
         "integrales": false,
-        "max_resultats": 200,
-        "max_sitemaps": 3
+        "max_resultats": 400,
+        "max_sitemaps": 30,
+        "budget_s": 150
       },
       {
         "plateforme": "TF1+",
@@ -1019,9 +1020,9 @@
         ],
         "integrales": true,
         "exclure_sitemap": "fr-be|fr-ch|fr-lu",
-        "max_sitemaps": 20,
+        "max_sitemaps": 30,
         "budget_s": 180,
-        "max_resultats": 200
+        "max_resultats": 400
       },
       {
         "plateforme": "LCI.fr",
@@ -1033,8 +1034,9 @@
         ],
         "motif_url": "tf1info\\.fr/(politique|elections)/",
         "integrales": false,
-        "max_sitemaps": 4,
-        "max_resultats": 100
+        "max_sitemaps": 30,
+        "max_resultats": 400,
+        "budget_s": 150
       },
       {
         "plateforme": "LCP.fr",
@@ -1053,7 +1055,9 @@
           "https://lcp.fr/sitemap.xml.gz",
           "https://lcp.fr/sitemap_index.xml"
         ],
-        "max_sitemaps": 15
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400
       },
       {
         "plateforme": "Public Sénat",
@@ -1067,7 +1071,9 @@
         ],
         "motif_url": "publicsenat\\.fr/(emission|emissions|documentaire|documentaires|video|videos|programme|programmes|replay)/",
         "integrales": true,
-        "max_sitemaps": 14
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400
       },
       {
         "plateforme": "france.tv",
@@ -1102,7 +1108,7 @@
         "filtre_sitemap": "programs_index|c-dans-l-air|c-ce-soir|c-politique|c-a-vous|l-evenement|complement-d-enquete|envoye-special|les-4-verites|dimanche-en-politique|cash-investigation|questions-politiques|politique|election|presidentielle|face-a-face|debat|documentaire|infrarouge|la-france-en-vrai|le-monde-en-face|l-oeil-du-20h|vous-avez-la-parole",
         "max_sitemaps": 30,
         "budget_s": 150,
-        "max_resultats": 200
+        "max_resultats": 400
       },
       {
         "plateforme": "arte.tv",
@@ -1116,8 +1122,10 @@
         "motif_url": "arte\\.tv/fr/videos/",
         "integrales": true,
         "filtre_sitemap": "sitemap\\.xml|fr_programs",
-        "max_resultats": 150,
-        "format_defaut": "Documentaire"
+        "max_resultats": 400,
+        "format_defaut": "Documentaire",
+        "max_sitemaps": 30,
+        "budget_s": 150
       },
       {
         "plateforme": "CNews.fr",
@@ -1129,7 +1137,9 @@
         ],
         "motif_url": "cnews\\.fr/(emission|emissions|videos?|politique)/",
         "integrales": false,
-        "max_sitemaps": 6
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400
       },
       {
         "plateforme": "M6+",
@@ -1141,7 +1151,9 @@
         ],
         "motif_url": "m6\\.fr/.+-(p|c)_\\d+",
         "integrales": true,
-        "actif": true
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400
       },
       {
         "plateforme": "W9 Replay",
@@ -1154,8 +1166,42 @@
         ],
         "motif_url": "w9\\.fr/.+",
         "integrales": false,
-        "max_sitemaps": 6,
-        "max_resultats": 150
+        "max_sitemaps": 30,
+        "max_resultats": 400,
+        "budget_s": 150
+      },
+      {
+        "plateforme": "RMC Story",
+        "nom": "RMC Story",
+        "racine": "https://rmcstory.bfmtv.com",
+        "mots_sitemap": [
+          "video",
+          "replay",
+          "emission",
+          "programme"
+        ],
+        "motif_url": "rmcstory\\.bfmtv\\.com/.+",
+        "integrales": false,
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400,
+        "format_defaut": "Documentaire"
+      },
+      {
+        "plateforme": "RMC Life",
+        "nom": "RMC Life",
+        "racine": "https://rmclife.bfmtv.com",
+        "mots_sitemap": [
+          "video",
+          "replay",
+          "emission",
+          "programme"
+        ],
+        "motif_url": "rmclife\\.bfmtv\\.com/.+",
+        "integrales": false,
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 400
       }
     ]
   }
