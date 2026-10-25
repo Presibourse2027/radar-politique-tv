@@ -428,6 +428,14 @@ const ICON = {
   info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>'
 };
 
+function infoFaute(p){
+  // Sans résumé dans la grille : on affiche seulement ce que la grille donne (catégories, durée)
+  const parts = [...new Set((p.categories || []).filter(Boolean))];
+  const d = duree(p);
+  if (d) parts.push(d);
+  return parts.length ? `<div class="sub fallback">${esc(parts.join(' · '))}</div>` : '';
+}
+
 function carte(p){
   const d = new Date(p.debut), now = Date.now();
   const live = enDirect(p, now), fini = passe(p, now);
@@ -455,7 +463,7 @@ function carte(p){
       <h3>${esc(p.titre)}</h3>
       ${p.sousTitre ? `<div class="sub">${esc(p.sousTitre)}</div>` : ''}
       ${inv}${ann}${pres}
-      ${p.resume ? `<div class="resume" data-act="deplier">${esc(p.resume)}</div>` : ''}
+      ${p.resume ? `<div class="resume" data-act="deplier">${esc(p.resume)}</div>` : infoFaute(p)}
       <div class="actions">
         <button class="act fav" data-act="fav" data-id="${esc(p.id)}" aria-pressed="${fav}">${ICON.star}${fav?'Suivie':'Suivre'}</button>
         ${action2}
