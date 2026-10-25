@@ -768,7 +768,11 @@
       "Museum TV"
     ],
     "_aide_titres_documentaires": "Titres exacts de documentaires diffusés sur des chaînes généralistes (ex. la case documentaire du soir). Retenus quelle que soit la chaîne.",
-    "titres_documentaires": []
+    "titres_documentaires": [
+      "Enquête exclusive",
+      "Zone interdite"
+    ],
+    "duree_minimum_minutes": 45
   },
   "annonces": {
     "_aide": "Annonces d'invités cherchées dans la presse (Google Actualités) et sur Bluesky. comptes_bluesky : identifiants exacts à suivre (ex. « franceinfo.fr »), à compléter librement. bluesky_chercher_comptes : noms recherchés automatiquement (gardés seulement si le nom affiché correspond exactement).",
