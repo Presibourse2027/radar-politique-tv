@@ -421,6 +421,23 @@ def main() -> int:
         "programmes": programmes,
         "inventaireChainesInfo": inventaire,
     }
+    # Replays à la demande (YouTube officiel) : cumulés d'un passage à l'autre
+    if not args.fichier or args.annonces:
+        try:
+            import replays
+            ancien = {}
+            if chemin_existant := Path(args.sortie):
+                if chemin_existant.exists():
+                    try:
+                        ancien = json.loads(chemin_existant.read_text(encoding="utf-8"))
+                    except Exception:  # noqa: BLE001
+                        ancien = {}
+            sortie["replays"], sortie["replaysInfo"] = replays.collecter(
+                filtres, det, ancien.get("replays", []),
+                (ancien.get("replaysInfo") or {}).get("youtubeIds", {}), args.annonces)
+        except Exception as e:  # noqa: BLE001
+            print(f"Replays indisponibles : {e}", file=sys.stderr)
+            sortie["replays"], sortie["replaysInfo"] = [], {"erreur": str(e)}
     # Annonces d'invités (presse, Bluesky) : facultatif, ne bloque jamais la collecte
     if not args.fichier or args.annonces:
         try:

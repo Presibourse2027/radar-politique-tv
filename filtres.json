@@ -710,5 +710,94 @@
       "Parti communiste français"
     ],
     "bluesky_recherches": []
+  },
+  "replays": {
+    "_aide": "Vidéos politiques à la demande publiées par les chaînes officielles sur YouTube. Pour ajouter une chaîne : son nom et son identifiant @ YouTube (sans @). Le robot trouve seul l'identifiant technique.",
+    "actif": true,
+    "jours_conserves": 14,
+    "nombre_maximum": 600,
+    "exclure_shorts": true,
+    "chaines_youtube": [
+      {
+        "nom": "BFM TV",
+        "handle": "BFMTV"
+      },
+      {
+        "nom": "LCI",
+        "handle": "LCI"
+      },
+      {
+        "nom": "CNews",
+        "handle": "CNEWS"
+      },
+      {
+        "nom": "franceinfo",
+        "handle": "franceinfo"
+      },
+      {
+        "nom": "LCP",
+        "handle": "LCP"
+      },
+      {
+        "nom": "LCP",
+        "handle": "LCPAN"
+      },
+      {
+        "nom": "Public Sénat",
+        "handle": "publicsenat"
+      },
+      {
+        "nom": "France 24",
+        "handle": "France24_fr"
+      },
+      {
+        "nom": "France Inter",
+        "handle": "franceinter"
+      },
+      {
+        "nom": "C dans l'air",
+        "handle": "cdanslair"
+      },
+      {
+        "nom": "C à vous",
+        "handle": "cavous"
+      },
+      {
+        "nom": "Quotidien",
+        "handle": "Quotidien"
+      },
+      {
+        "nom": "TF1 Info",
+        "handle": "TF1INFO"
+      },
+      {
+        "nom": "France 2",
+        "handle": "france2"
+      },
+      {
+        "nom": "RTL",
+        "handle": "RTL"
+      },
+      {
+        "nom": "Europe 1",
+        "handle": "Europe1"
+      },
+      {
+        "nom": "RMC",
+        "handle": "RMC"
+      },
+      {
+        "nom": "Sud Radio",
+        "handle": "SudRadio"
+      },
+      {
+        "nom": "Arte",
+        "handle": "arte"
+      },
+      {
+        "nom": "i24 News",
+        "handle": "i24NEWSFR"
+      }
+    ]
   }
 }
