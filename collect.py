@@ -206,8 +206,10 @@ class Detecteur:
         self.doc_societe = motif(doc.get("mots_societe", []))
         self.doc_histoire = motif(doc.get("mots_histoire", []))
         self.doc_exclus = motif(doc.get("titres_exclus", []), pluriel=False)
+        self.doc_chaines = {cle_chaine(c) for c in doc.get("chaines_dediees", [])}
+        self.doc_titres = doc.get("titres_documentaires", [])
 
-    def theme_documentaire(self, titre, sous_titre, desc, cats):
+    def theme_documentaire(self, titre, sous_titre, desc, cats, chaine=""):
         """« Société » ou « Histoire » si l'émission est un documentaire de ce champ, sinon ''."""
         if not self.doc_actif:
             return ""
@@ -218,6 +220,10 @@ class Detecteur:
             return ""
         if trouve(self.doc_exclus, t):
             return ""
+        if cle_chaine(chaine) in self.doc_chaines:
+            return "Documentaire"
+        if titre_dans_liste(t, self.doc_titres):
+            return "Documentaire"
         if not (est_documentaire(t, d, c) or any("reportage" in x or "documentaire" in x for x in c)):
             return ""
         if trouve(self.doc_societe, t + " " + d) or any("societe" in x for x in c):
@@ -374,7 +380,7 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                     plateau = True
                 section, theme = "politique", ""
                 if not res:
-                    theme = det.theme_documentaire(titre, sous_titre, desc, cats)
+                    theme = det.theme_documentaire(titre, sous_titre, desc, cats, chaine)
                     if theme:
                         section = "documentaire"
                         res = (det.seuil, ["documentaire " + theme.lower()])
