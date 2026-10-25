@@ -201,6 +201,30 @@ class Detecteur:
         self.info = {cle_chaine(c) for c in f.get("chaines_info", [])}
         self.exclus_info = motif(f.get("titres_exclus_chaines_info", []), pluriel=False)
         self.duree_min_info = int(f.get("duree_minimum_plateau_minutes", 20))
+        doc = f.get("documentaires", {})
+        self.doc_actif = bool(doc.get("actif", False))
+        self.doc_societe = motif(doc.get("mots_societe", []))
+        self.doc_histoire = motif(doc.get("mots_histoire", []))
+        self.doc_exclus = motif(doc.get("titres_exclus", []), pluriel=False)
+
+    def theme_documentaire(self, titre, sous_titre, desc, cats):
+        """« Société » ou « Histoire » si l'émission est un documentaire de ce champ, sinon ''."""
+        if not self.doc_actif:
+            return ""
+        t = norm(titre + " " + sous_titre)
+        d = norm(desc)
+        c = [norm(x) for x in cats]
+        if any(any(x == k or x.startswith(k + " ") for k in self.cat_exc) for x in c):
+            return ""
+        if trouve(self.doc_exclus, t):
+            return ""
+        if not (est_documentaire(t, d, c) or any("reportage" in x or "documentaire" in x for x in c)):
+            return ""
+        if trouve(self.doc_societe, t + " " + d) or any("societe" in x for x in c):
+            return "Société"
+        if trouve(self.doc_histoire, t + " " + d) or any("histoire" in x for x in c):
+            return "Histoire"
+        return ""
 
     def est_chaine_info(self, chaine: str) -> bool:
         return cle_chaine(chaine) in self.info
@@ -348,6 +372,12 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                 if not res and det.plateau_info(titre, desc, cats, chaine, debut, fin):
                     res = (det.seuil, ["plateau de chaîne info"])
                     plateau = True
+                section, theme = "politique", ""
+                if not res:
+                    theme = det.theme_documentaire(titre, sous_titre, desc, cats)
+                    if theme:
+                        section = "documentaire"
+                        res = (det.seuil, ["documentaire " + theme.lower()])
                 if not res:
                     continue
                 score, raisons = res
@@ -358,6 +388,8 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                                                [norm(c) for c in cats]))
                 if plateau and fmt == "Magazine politique":
                     fmt = "Plateau info"
+                if section == "documentaire":
+                    fmt = "Documentaire"
                 rediff = el.find("previously-shown") is not None or \
                     bool(re.search(r"\brediffusion\b|\(r\)$", norm(titre + " " + sous_titre)))
                 cle = hashlib.sha1(f"{cid}|{iso(debut)}|{norm(titre)}".encode()).hexdigest()[:16]
@@ -376,6 +408,8 @@ def collecter(flux, det: Detecteur, jours_passes: int, jours_a_venir: int):
                     "categories": cats[:3],
                     "rediffusion": rediff,
                     "nationale": det.est_nationale(chaine),
+                    "section": section,
+                    "theme": theme,
                     "score": score,
                     "raisons": raisons,
                 }
