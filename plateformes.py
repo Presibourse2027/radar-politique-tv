@@ -171,6 +171,8 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                 image = texte(img, "loc")
             date = date_iso(texte(vid, "publication_date")) or date_iso(texte(news, "publication_date")) \
                 or date_iso(texte(u, "lastmod"))
+            if not date and site.get("sans_date"):  # pages de programmes non datées (catalogue)
+                date = maintenant
             if not titre or not date or date < limite or date > maintenant + timedelta(days=2):
                 continue
             info["pagesRecentes"] += 1

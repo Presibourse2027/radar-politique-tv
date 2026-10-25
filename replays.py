@@ -130,6 +130,7 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
 
     nouveaux, lues = [], 0
     info["chaines"] = {}
+    tout_retenir = {c.get("nom") for c in conf.get("chaines_youtube", []) if c.get("tout_retenir")}
     for nom, data in flux:
         try:
             titre_chaine, videos = lire_flux(data, nom)
@@ -143,6 +144,8 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
                 continue
             desc = nettoyer_desc(v["desc"])
             res = det.evaluer(v["titre"], "", desc, [], nom)
+            if not res and nom in tout_retenir:  # émission politique dédiée : toutes ses vidéos
+                res = (det.seuil, ["émission suivie"])
             theme = "" if res else det.theme_documentaire(v["titre"], "", desc, [], nom, 0)
             if not res and not theme:
                 continue
@@ -187,7 +190,16 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
     for r in nouveaux:
         par_id[r["id"]] = r
     tout = sorted(par_id.values(), key=lambda r: r["date"], reverse=True)
-    tout = tout[: int(conf.get("nombre_maximum", 600))]
+    # Plafond par plateforme (évite qu'un site très prolifique évince les autres)
+    plafonds = {x.get("plateforme"): int(x.get("max_resultats", 300)) for x in conf.get("plateformes", [])}
+    plafonds.setdefault("YouTube", int(conf.get("max_youtube", 400)))
+    compte, garde = {}, []
+    for r in tout:
+        pf = r.get("plateforme", "YouTube")
+        compte[pf] = compte.get(pf, 0) + 1
+        if compte[pf] <= plafonds.get(pf, 300):
+            garde.append(r)
+    tout = garde[: int(conf.get("nombre_maximum", 600))]
     info.update({"lues": lues, "nouvelles": len(nouveaux), "total": len(tout)})
     print(f"Replays : {len(nouveaux)} vidéo(s) retenue(s) sur {lues} lues ; {len(tout)} au catalogue",
           file=sys.stderr)

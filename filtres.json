@@ -824,7 +824,7 @@
     "_aide": "Vidéos politiques à la demande publiées par les chaînes officielles sur YouTube. Pour chaque chaîne : identifiants techniques (ids) ou noms @ à essayer (handles, sans @), et un mot attendu dans le nom du compte pour éviter les homonymes.",
     "actif": true,
     "jours_conserves": 14,
-    "nombre_maximum": 1500,
+    "nombre_maximum": 2500,
     "exclure_shorts": true,
     "chaines_youtube": [
       {
@@ -990,7 +990,8 @@
           "GGRMC",
           "lesgrandesgueulesrmc"
         ],
-        "attendu": "gueules"
+        "attendu": "gueules",
+        "tout_retenir": true
       },
       {
         "nom": "Canal+",
@@ -1015,7 +1016,7 @@
         "motif_url": "bfmtv\\.com/(politique/|replay|emissions?/)",
         "exclure_url": "/(sport|tech|people|economie|crypto|meteo|auto)/",
         "integrales": false,
-        "max_resultats": 400,
+        "max_resultats": 350,
         "max_sitemaps": 4,
         "budget_s": 150,
         "preferer_numeros": "bas"
@@ -1226,7 +1227,8 @@
           "https://www.rmcbfmplay.com/sitemap.xml",
           "https://www.rmcbfmplay.com/sitemap_index.xml",
           "https://www.rmcbfmplay.com/sitemaps/sitemap.xml"
-        ]
+        ],
+        "actif": false
       },
       {
         "plateforme": "myCANAL",
@@ -1241,7 +1243,7 @@
           "canal"
         ],
         "motif_url": "canalplus\\.com/.+",
-        "exclure_url": "/(sport|football|rugby|formule-1|moto|cinema|films?|series|jeunesse|kids|offres?|abonnement|aide)/",
+        "exclure_url": "canalplus\\.com/(bf|ch|be|ci|sn|cm|ga|cd|cg|bj|tg|ml|ne|gn|mg|mu|re|gp|mq|gf|nc|pf|pl|at|it)/|/(sport|cinema|films?|series|jeunesse|kids|telefilms|offres?|abonnement|aide)/",
         "chaines_par_url": [
           [
             "cnews",
@@ -1261,11 +1263,14 @@
           ]
         ],
         "integrales": true,
-        "max_sitemaps": 6,
+        "max_sitemaps": 8,
         "budget_s": 60,
-        "max_resultats": 200
+        "max_resultats": 150,
+        "sans_date": true,
+        "exclure_sitemap": "canalplus\\.com/(bf|ch|be|ci|sn|cm|ga|cd|cg|bj|tg|ml|ne|gn|mg|mu|re|gp|mq|gf|nc|pf|pl|at|it|et|rw|bi|mr|td|cf|dj|ht|km|vn|mm)/"
       }
     ],
-    "budget_total_minutes": 11
+    "budget_total_minutes": 11,
+    "max_youtube": 400
   }
 }
