@@ -143,9 +143,11 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
                 continue
             desc = nettoyer_desc(v["desc"])
             res = det.evaluer(v["titre"], "", desc, [], nom)
-            if not res:
+            theme = "" if res else det.theme_documentaire(v["titre"], "", desc, [], nom, 0)
+            if not res and not theme:
                 continue
-            score, raisons = res
+            section = "politique" if res else "documentaire"
+            score, raisons = res if res else (0, ["documentaire"])
             tn, dn = norm(v["titre"]), norm(desc)
             noms = trouve(det.personnes, tn + " " + dn)
             noms = [n for n in noms if not any(n != m and n in m for m in noms)]
@@ -157,7 +159,9 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
                 "lien": v["lien"],
                 "image": f"https://i.ytimg.com/vi/{v['vid']}/mqdefault.jpg",
                 "date": iso(v["date"]),
-                "format": classer(tn, dn, norm(nom), est_documentaire(tn, dn, [])),
+                "format": classer(tn, dn, norm(nom), est_documentaire(tn, dn, [])) if res else "Documentaire",
+                "section": section,
+                "theme": theme,
                 "personnes": [affichage.get(n, n.title()) for n in noms][:4],
                 "resume": desc[:300],
                 "integrale": bool(RE_INTEGRALE.search(tn)),
@@ -185,7 +189,7 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
     tout = sorted(par_id.values(), key=lambda r: r["date"], reverse=True)
     tout = tout[: int(conf.get("nombre_maximum", 600))]
     info.update({"lues": lues, "nouvelles": len(nouveaux), "total": len(tout)})
-    print(f"Replays : {len(nouveaux)} vidéo(s) politique(s) sur {lues} lues ; {len(tout)} au catalogue",
+    print(f"Replays : {len(nouveaux)} vidéo(s) retenue(s) sur {lues} lues ; {len(tout)} au catalogue",
           file=sys.stderr)
     for e in info.get("erreurs", [])[:15]:
         print("  ·", e, file=sys.stderr)

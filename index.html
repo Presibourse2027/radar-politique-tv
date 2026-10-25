@@ -407,7 +407,7 @@ function filtrer(liste, appliquerPrefs=true){
     if (filtreFormat && p.format !== filtreFormat) return false;
     if (filtreChaine && p.chaine !== filtreChaine) return false;
     if (appliquerPrefs && !favoris[p.id] && p._source !== 'manuel'){
-      if (!prefs.autres && p.nationale === false) return false;
+      if (!prefs.autres && p.nationale === false && secteur(p) !== 'documentaire') return false;
       if (prefs.rediff && p.rediffusion) return false;
       if (prefs.nuit){ const d = new Date(p.debut), h = heureFR(d), m = minuteFR(d); if ((h === 0 && m >= 30) || (h >= 1 && h < 6)) return false; }
     }
@@ -502,11 +502,11 @@ function listeParJour(items, ordreInverse=false){
 function vide(titre, texte){ return `<div class="empty"><b>${esc(titre)}</b>${esc(texte)}</div>`; }
 
 function rendreChips(toutes){
-  const formats = Object.keys(FORMATS).filter(f => toutes.some(p => p.format === f && secteur(p) === section));
+  const formats = section === 'politique' ? Object.keys(FORMATS).filter(f => toutes.some(p => p.format === f && secteur(p) === section)) : [];
   const chaines = [...new Set([...(vue === 'passe' && modeReplay === 'demande' ? (grille?.replays||[]) : []), ...toutes.filter(p => prefs.autres || p.nationale !== false || favoris[p.id] || p._source === 'manuel')].map(p => p.chaine).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
   if (filtreChaine && !chaines.includes(filtreChaine)) filtreChaine = '';
   $('#chips').innerHTML =
-    `<button class="chip" data-sec="politique" aria-pressed="${section==='politique'}">Politique</button><button class="chip" data-sec="documentaire" aria-pressed="${section==='documentaire'}">Documentaires</button><span class="chip-sep"></span><button class="chip" data-fmt="" aria-pressed="${!filtreFormat}">Tout</button>` +
+    `<button class="chip" data-sec="politique" aria-pressed="${section==='politique'}">Politique</button><button class="chip" data-sec="documentaire" aria-pressed="${section==='documentaire'}">Documentaires</button>` + (section === 'politique' ? `<span class="chip-sep"></span><button class="chip" data-fmt="" aria-pressed="${!filtreFormat}">Tout</button>` : '') +
     formats.map(f => `<button class="chip" data-fmt="${esc(f)}" aria-pressed="${filtreFormat===f}"><span class="dot" style="background:var(${FORMATS[f].c})"></span>${esc(FORMATS[f].court)}</button>`).join('') +
     `<label class="chip sel" aria-pressed="${!!filtreChaine}"><select id="selChaine" aria-label="Chaîne"><option value="">Toutes les chaînes</option>${chaines.map(c=>`<option ${c===filtreChaine?'selected':''}>${esc(c)}</option>`).join('')}</select></label>`;
   $('#chainesList').innerHTML = chaines.map(c=>`<option value="${esc(c)}">`).join('');
@@ -584,6 +584,7 @@ function rendreDemande(){
   const q = norm(recherche.trim());
   const tous = grille?.replays || [];
   const liste = tous.filter(r => {
+    if ((r.section || (r.format === 'Documentaire' ? 'documentaire' : 'politique')) !== section) return false;
     if (filtreFormat && r.format !== filtreFormat) return false;
     if (filtreChaine && r.chaine !== filtreChaine) return false;
     if (integralesSeules && !r.integrale) return false;
