@@ -1163,11 +1163,17 @@
         ],
         "motif_url": "cnews\\.fr/.+",
         "integrales": false,
-        "max_sitemaps": 6,
+        "max_sitemaps": 8,
         "budget_s": 150,
         "max_resultats": 400,
-        "preferer_numeros": "bas",
-        "exclure_url": "/(sport|people|meteo|faits-divers|monde/insolite|economie/conso)/"
+        "preferer_numeros": "haut",
+        "exclure_url": "/(sport|people|meteo|faits-divers|monde/insolite|economie/conso)/",
+        "sitemaps": [
+          "https://www.cnews.fr/sitemap-news.xml",
+          "https://www.cnews.fr/sitemap_news.xml",
+          "https://www.cnews.fr/news-sitemap.xml",
+          "https://www.cnews.fr/googlenews.xml"
+        ]
       },
       {
         "plateforme": "M6+",
@@ -1179,54 +1185,6 @@
         ],
         "motif_url": "m6\\.fr/.+-(p|c)_\\d+",
         "integrales": true,
-        "max_sitemaps": 30,
-        "budget_s": 150,
-        "max_resultats": 400
-      },
-      {
-        "plateforme": "W9 Replay",
-        "nom": "W9",
-        "racine": "https://www.w9.fr",
-        "mots_sitemap": [
-          "video",
-          "replay",
-          "programme"
-        ],
-        "motif_url": "w9\\.fr/.+",
-        "integrales": false,
-        "max_sitemaps": 30,
-        "max_resultats": 400,
-        "budget_s": 150
-      },
-      {
-        "plateforme": "RMC Story",
-        "nom": "RMC Story",
-        "racine": "https://rmcstory.bfmtv.com",
-        "mots_sitemap": [
-          "video",
-          "replay",
-          "emission",
-          "programme"
-        ],
-        "motif_url": "rmcstory\\.bfmtv\\.com/.+",
-        "integrales": false,
-        "max_sitemaps": 30,
-        "budget_s": 150,
-        "max_resultats": 400,
-        "format_defaut": "Documentaire"
-      },
-      {
-        "plateforme": "RMC Life",
-        "nom": "RMC Life",
-        "racine": "https://rmclife.bfmtv.com",
-        "mots_sitemap": [
-          "video",
-          "replay",
-          "emission",
-          "programme"
-        ],
-        "motif_url": "rmclife\\.bfmtv\\.com/.+",
-        "integrales": false,
         "max_sitemaps": 30,
         "budget_s": 150,
         "max_resultats": 400
@@ -1263,7 +1221,12 @@
         "integrales": true,
         "max_sitemaps": 10,
         "budget_s": 90,
-        "max_resultats": 200
+        "max_resultats": 200,
+        "sitemaps": [
+          "https://www.rmcbfmplay.com/sitemap.xml",
+          "https://www.rmcbfmplay.com/sitemap_index.xml",
+          "https://www.rmcbfmplay.com/sitemaps/sitemap.xml"
+        ]
       },
       {
         "plateforme": "myCANAL",
@@ -1298,8 +1261,8 @@
           ]
         ],
         "integrales": true,
-        "max_sitemaps": 12,
-        "budget_s": 90,
+        "max_sitemaps": 6,
+        "budget_s": 60,
         "max_resultats": 200
       }
     ],
