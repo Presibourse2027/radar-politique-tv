@@ -755,7 +755,10 @@
         "handles": [
           "LCPAN"
         ],
-        "attendu": "lcp"
+        "attendu": "lcp",
+        "ids": [
+          "UCHGFbA0KWBgf6gMbyUCZeCQ"
+        ]
       },
       {
         "nom": "Public Sénat",
@@ -844,7 +847,7 @@
       {
         "nom": "Sud Radio",
         "handles": [
-          "SudRadioFrance",
+          "sudradioofficiel",
           "sudradiofr",
           "SudRadioOfficiel",
           "SUDRADIO"
@@ -865,7 +868,10 @@
           "i24newsfrancais",
           "i24NEWSfr"
         ],
-        "attendu": "i24"
+        "attendu": "i24",
+        "ids": [
+          "UCgPYsPyGhhQJQ9zOUQDWDMA"
+        ]
       }
     ]
   }
