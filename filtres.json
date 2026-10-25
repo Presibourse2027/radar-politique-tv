@@ -712,7 +712,7 @@
     "bluesky_recherches": []
   },
   "replays": {
-    "_aide": "Vidéos politiques à la demande publiées par les chaînes officielles sur YouTube. Pour ajouter une chaîne : son nom et son identifiant @ YouTube (sans @). Le robot trouve seul l'identifiant technique.",
+    "_aide": "Vidéos politiques à la demande publiées par les chaînes officielles sur YouTube. Pour chaque chaîne : identifiants techniques (ids) ou noms @ à essayer (handles, sans @), et un mot attendu dans le nom du compte pour éviter les homonymes.",
     "actif": true,
     "jours_conserves": 14,
     "nombre_maximum": 600,
@@ -720,83 +720,152 @@
     "chaines_youtube": [
       {
         "nom": "BFM TV",
-        "handle": "BFMTV"
+        "handles": [
+          "BFMTV"
+        ],
+        "attendu": "bfm"
       },
       {
         "nom": "LCI",
-        "handle": "LCI"
+        "handles": [
+          "LCI"
+        ],
+        "attendu": "lci"
       },
       {
         "nom": "CNews",
-        "handle": "CNEWS"
+        "ids": [
+          "UCXKJrYczY2_fJEZgFPGY0HQ"
+        ],
+        "handles": [
+          "CNEWSofficiel",
+          "CNEWSFrance"
+        ],
+        "attendu": "cnews"
       },
       {
         "nom": "franceinfo",
-        "handle": "franceinfo"
+        "handles": [
+          "franceinfo"
+        ],
+        "attendu": "franceinfo"
       },
       {
         "nom": "LCP",
-        "handle": "LCP"
-      },
-      {
-        "nom": "LCP",
-        "handle": "LCPAN"
+        "handles": [
+          "LCPAN"
+        ],
+        "attendu": "lcp"
       },
       {
         "nom": "Public Sénat",
-        "handle": "publicsenat"
+        "handles": [
+          "publicsenat"
+        ],
+        "attendu": "public senat"
       },
       {
         "nom": "France 24",
-        "handle": "France24_fr"
-      },
-      {
-        "nom": "France Inter",
-        "handle": "franceinter"
-      },
-      {
-        "nom": "C dans l'air",
-        "handle": "cdanslair"
-      },
-      {
-        "nom": "C à vous",
-        "handle": "cavous"
-      },
-      {
-        "nom": "Quotidien",
-        "handle": "Quotidien"
+        "ids": [
+          "UCCCPCZNChQdGa9EkATeye4g"
+        ],
+        "handles": [
+          "FRANCE24francais",
+          "France24fr",
+          "FRANCE24"
+        ],
+        "attendu": "france 24"
       },
       {
         "nom": "TF1 Info",
-        "handle": "TF1INFO"
+        "handles": [
+          "TF1INFO"
+        ],
+        "attendu": "tf1"
       },
       {
-        "nom": "France 2",
-        "handle": "france2"
+        "nom": "C dans l'air",
+        "handles": [
+          "Cdanslair",
+          "CdanslairOfficiel",
+          "cdanslairfrance5",
+          "CDANSLAIR"
+        ],
+        "attendu": "dans l'air"
+      },
+      {
+        "nom": "C à vous",
+        "handles": [
+          "CaVousFrance5",
+          "CAVOUSofficiel",
+          "cavousfrance5",
+          "CAVOUS"
+        ],
+        "attendu": "vous"
+      },
+      {
+        "nom": "Quotidien",
+        "handles": [
+          "QuotidienOfficiel",
+          "Quotidien_TMC",
+          "quotidientmc",
+          "QUOTIDIEN"
+        ],
+        "attendu": "quotidien"
+      },
+      {
+        "nom": "France Inter",
+        "handles": [
+          "franceinter"
+        ],
+        "attendu": "inter"
       },
       {
         "nom": "RTL",
-        "handle": "RTL"
+        "handles": [
+          "RTL"
+        ],
+        "attendu": "rtl"
       },
       {
         "nom": "Europe 1",
-        "handle": "Europe1"
+        "handles": [
+          "Europe1"
+        ],
+        "attendu": "europe 1"
       },
       {
         "nom": "RMC",
-        "handle": "RMC"
+        "handles": [
+          "RMC"
+        ],
+        "attendu": "rmc"
       },
       {
         "nom": "Sud Radio",
-        "handle": "SudRadio"
+        "handles": [
+          "SudRadioFrance",
+          "sudradiofr",
+          "SudRadioOfficiel",
+          "SUDRADIO"
+        ],
+        "attendu": "sud radio"
       },
       {
         "nom": "Arte",
-        "handle": "arte"
+        "handles": [
+          "arte"
+        ],
+        "attendu": "arte"
       },
       {
         "nom": "i24 News",
-        "handle": "i24NEWSFR"
+        "handles": [
+          "i24NEWSFrancais",
+          "i24newsfrancais",
+          "i24NEWSfr"
+        ],
+        "attendu": "i24"
       }
     ]
   }

@@ -101,17 +101,31 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
             flux.append((f.stem.replace("youtube_", "").replace("_", " "), f.read_bytes()))
     else:
         for c in conf.get("chaines_youtube", []):
-            nom, handle = c.get("nom", ""), c.get("handle", "")
-            cid = c.get("id") or ids_connus.get(handle)
-            try:
-                if not cid:
-                    cid = resoudre(handle)
-                if not cid:
-                    raise ValueError("identifiant introuvable")
-                ids[handle] = cid
-                flux.append((nom, lire("https://www.youtube.com/feeds/videos.xml?channel_id=" + cid)))
-            except Exception as e:  # noqa: BLE001
-                info.setdefault("erreurs", []).append(f"YouTube @{handle} ({nom}) : {e}")
+            nom = c.get("nom", "")
+            attendu = norm(c.get("attendu", ""))
+            # Candidats : identifiants techniques connus, puis noms @ à essayer dans l'ordre
+            essais = [("id", i) for i in ([c["id"]] if c.get("id") else []) + c.get("ids", [])]
+            for h in ([c["handle"]] if c.get("handle") else []) + c.get("handles", []):
+                essais.append(("handle", h))
+            echecs = []
+            for genre, val in essais:
+                try:
+                    cid = val if genre == "id" else (ids_connus.get(val) or resoudre(val))
+                    if not cid:
+                        raise ValueError("identifiant introuvable")
+                    data = lire("https://www.youtube.com/feeds/videos.xml?channel_id=" + cid)
+                    titre = ET.fromstring(data).findtext("a:title", default="", namespaces=NS)
+                    if attendu and attendu not in norm(titre):
+                        raise ValueError(f"compte « {titre} » sans rapport")
+                    if genre == "handle":
+                        ids[val] = cid
+                    flux.append((nom, data))
+                    break
+                except Exception as e:  # noqa: BLE001
+                    echecs.append(f"{'@' if genre == 'handle' else ''}{val} : {e}")
+            else:
+                if essais:
+                    info.setdefault("erreurs", []).append(f"YouTube {nom} : " + " ; ".join(echecs))
     info["youtubeIds"] = ids
 
     nouveaux, lues = [], 0
