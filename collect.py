@@ -225,11 +225,13 @@ class Detecteur:
             return "Documentaire"
         if titre_dans_liste(t, self.doc_titres):
             return "Documentaire"
-        if duree >= self.doc_duree_min and any("societe" in x or "histoire" in x for x in c):
-            return "Société" if any("societe" in x for x in c) else "Histoire"
+        if any("magazine" in x and "societ" in x for x in c):
+            return "Société"
+        if duree >= self.doc_duree_min and any("societ" in x or "histoire" in x for x in c):
+            return "Société" if any("societ" in x for x in c) else "Histoire"
         if not (est_documentaire(t, d, c) or any("reportage" in x or "documentaire" in x for x in c)):
             return ""
-        if trouve(self.doc_societe, t + " " + d) or any("societe" in x for x in c):
+        if trouve(self.doc_societe, t + " " + d) or any("societ" in x for x in c):
             return "Société"
         if trouve(self.doc_histoire, t + " " + d) or any("histoire" in x for x in c):
             return "Histoire"
