@@ -57,7 +57,8 @@
     "Planète+",
     "Toute l'Histoire",
     "Ushuaïa TV",
-    "Museum TV"
+    "Museum TV",
+    "Canal+ Docs"
   ],
   "_aide_chaines_info": "Chaînes d'info en continu : leurs émissions de plateau (6 h - minuit, 20 min et plus, hors journaux et directs en continu) sont retenues même sans mot politique, au format « Plateau info ». LCP, Public Sénat, France 24 et i24 sont traitées par mots-clés.",
   "chaines_info": [
@@ -990,6 +991,15 @@
           "lesgrandesgueulesrmc"
         ],
         "attendu": "gueules"
+      },
+      {
+        "nom": "Canal+",
+        "handles": [
+          "canalplus",
+          "CANALPLUS",
+          "canalplusfrance"
+        ],
+        "attendu": "canal"
       }
     ],
     "_aide_plateformes": "Replays des plateformes officielles, repérés dans leurs plans de site publics. motif_url : adresses à garder (pages vidéo/replay) ; chaines_par_url : chaîne déduite de l'adresse. Le diagnostic de chaque passage est dans data/programmes.json (replaysInfo.plateformes).",
@@ -1151,12 +1161,13 @@
           "video",
           "emission"
         ],
-        "motif_url": "cnews\\.fr/(emission|emissions|videos?|politique)/",
+        "motif_url": "cnews\\.fr/.+",
         "integrales": false,
         "max_sitemaps": 6,
         "budget_s": 150,
         "max_resultats": 400,
-        "preferer_numeros": "bas"
+        "preferer_numeros": "bas",
+        "exclure_url": "/(sport|people|meteo|faits-divers|monde/insolite|economie/conso)/"
       },
       {
         "plateforme": "M6+",
@@ -1251,6 +1262,43 @@
         ],
         "integrales": true,
         "max_sitemaps": 10,
+        "budget_s": 90,
+        "max_resultats": 200
+      },
+      {
+        "plateforme": "myCANAL",
+        "nom": "Canal+",
+        "racine": "https://www.canalplus.com",
+        "mots_sitemap": [
+          "video",
+          "replay",
+          "emission",
+          "programme",
+          "cnews",
+          "canal"
+        ],
+        "motif_url": "canalplus\\.com/.+",
+        "exclure_url": "/(sport|football|rugby|formule-1|moto|cinema|films?|series|jeunesse|kids|offres?|abonnement|aide)/",
+        "chaines_par_url": [
+          [
+            "cnews",
+            "CNews"
+          ],
+          [
+            "cstar",
+            "CStar"
+          ],
+          [
+            "c8",
+            "C8"
+          ],
+          [
+            "canalplus-docs|canal-docs|docs",
+            "Canal+ Docs"
+          ]
+        ],
+        "integrales": true,
+        "max_sitemaps": 12,
         "budget_s": 90,
         "max_resultats": 200
       }
