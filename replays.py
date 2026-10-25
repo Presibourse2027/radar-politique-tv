@@ -168,6 +168,16 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
             gardees += 1
         info["chaines"][nom] = {"compte": titre_chaine, "lues": len(videos), "retenues": gardees}
 
+    # Plateformes officielles (plans de site publics) : bfmtv.com, tf1.fr, lcp.fr, france.tv…
+    if not dossier_test:
+        try:
+            import plateformes
+            p_res, p_info = plateformes.collecter(filtres, det, limite, affichage)
+            nouveaux += p_res
+            info["plateformes"] = p_info
+        except Exception as e:  # noqa: BLE001
+            info.setdefault("erreurs", []).append(f"Plateformes : {e}")
+
     # Cumul avec les passages précédents
     par_id = {r["id"]: r for r in anciens if r.get("date", "") >= iso(limite)}
     for r in nouveaux:

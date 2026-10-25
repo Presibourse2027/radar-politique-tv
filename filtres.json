@@ -873,6 +873,149 @@
           "UCgPYsPyGhhQJQ9zOUQDWDMA"
         ]
       }
+    ],
+    "_aide_plateformes": "Replays des plateformes officielles, repérés dans leurs plans de site publics. motif_url : adresses à garder (pages vidéo/replay) ; chaines_par_url : chaîne déduite de l'adresse. Le diagnostic de chaque passage est dans data/programmes.json (replaysInfo.plateformes).",
+    "plateformes": [
+      {
+        "plateforme": "BFMTV.com",
+        "nom": "BFM TV",
+        "racine": "https://www.bfmtv.com",
+        "mots_sitemap": [
+          "video",
+          "replay"
+        ],
+        "motif_url": "/(videos?|replay|emissions?)/|_VN-|_AV-",
+        "exclure_url": "/(sport|tech|people|economie|crypto|meteo|auto)/",
+        "integrales": false
+      },
+      {
+        "plateforme": "TF1+",
+        "nom": "LCI",
+        "racine": "https://www.tf1.fr",
+        "mots_sitemap": [
+          "video",
+          "lci",
+          "program"
+        ],
+        "motif_url": "tf1\\.fr/(lci|tf1|tmc|tfx)/[^/]+/videos/",
+        "chaines_par_url": [
+          [
+            "tf1\\.fr/lci/",
+            "LCI"
+          ],
+          [
+            "tf1\\.fr/tf1/",
+            "TF1"
+          ],
+          [
+            "tf1\\.fr/tmc/",
+            "TMC"
+          ]
+        ],
+        "integrales": true
+      },
+      {
+        "plateforme": "LCI.fr",
+        "nom": "LCI",
+        "racine": "https://www.tf1info.fr",
+        "mots_sitemap": [
+          "video",
+          "news"
+        ],
+        "motif_url": "/(politique|elections?)/|video",
+        "integrales": false
+      },
+      {
+        "plateforme": "LCP.fr",
+        "nom": "LCP",
+        "racine": "https://lcp.fr",
+        "mots_sitemap": [
+          "programme",
+          "video",
+          "emission",
+          "documentaire"
+        ],
+        "motif_url": "lcp\\.fr/(programmes|documentaires|emissions|videos|replay)/",
+        "integrales": true
+      },
+      {
+        "plateforme": "Public Sénat",
+        "nom": "Public Sénat",
+        "racine": "https://www.publicsenat.fr",
+        "mots_sitemap": [
+          "emission",
+          "video",
+          "documentaire",
+          "programme"
+        ],
+        "motif_url": "publicsenat\\.fr/(emissions|documentaires|videos?|replay|programmes?)/",
+        "integrales": true
+      },
+      {
+        "plateforme": "france.tv",
+        "nom": "France Télévisions",
+        "racine": "https://www.france.tv",
+        "mots_sitemap": [
+          "video",
+          "program",
+          "france-5",
+          "france-2"
+        ],
+        "motif_url": "france\\.tv/(france-2|france-3|france-5|franceinfo|documentaires|slash)/",
+        "chaines_par_url": [
+          [
+            "/france-2/",
+            "France 2"
+          ],
+          [
+            "/france-3/",
+            "France 3"
+          ],
+          [
+            "/france-5/",
+            "France 5"
+          ],
+          [
+            "/franceinfo/",
+            "franceinfo"
+          ]
+        ],
+        "integrales": true
+      },
+      {
+        "plateforme": "arte.tv",
+        "nom": "Arte",
+        "racine": "https://www.arte.tv",
+        "mots_sitemap": [
+          "fr",
+          "video",
+          "program"
+        ],
+        "motif_url": "arte\\.tv/fr/videos/",
+        "integrales": true
+      },
+      {
+        "plateforme": "CNews.fr",
+        "nom": "CNews",
+        "racine": "https://www.cnews.fr",
+        "mots_sitemap": [
+          "video",
+          "emission"
+        ],
+        "motif_url": "cnews\\.fr/(emission|videos?)/",
+        "integrales": false
+      },
+      {
+        "plateforme": "M6+",
+        "nom": "M6",
+        "racine": "https://www.m6.fr",
+        "mots_sitemap": [
+          "video",
+          "program"
+        ],
+        "motif_url": "m6\\.fr/.+-(p|c)_\\d+",
+        "integrales": true
+      }
     ]
   }
 }

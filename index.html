@@ -166,7 +166,8 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
 .vcard{display:grid;grid-template-columns:150px 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin-bottom:10px;box-shadow:var(--shadow)}
 .vcard.vu{opacity:.75}
 .vthumb{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:var(--surface2);align-self:start}
-.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vthumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted);text-align:center;padding:6px}
+.vthumb img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
 .vthumb .play{position:absolute;inset:0;display:grid;place-items:center;color:#fff}
 .vthumb .play svg{width:34px;height:34px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.6))}
 .vthumb .int{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.72);color:#fff;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:6px}
@@ -585,14 +586,14 @@ function rendreDemande(){
   return outils + `<div class="sec"><h2>Vidéos des chaînes</h2><span class="count">${liste.length}</span></div>` + liste.slice(0, limite).map(r => {
     const f = FORMATS[r.format] || FORMATS['Magazine politique'];
     return `<article class="vcard${vus[r.id]?' vu':''}">
-      <button class="vthumb" data-act="regarder" data-id="${esc(r.id)}" data-url="${esc(r.lien)}" aria-label="Regarder"><img src="${esc(r.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="play">${ICON.play}</span>${r.integrale?'<span class="int">Intégrale</span>':''}</button>
+      <button class="vthumb" data-act="regarder" data-id="${esc(r.id)}" data-url="${esc(r.lien)}" aria-label="Regarder"><span class="ph">${esc(r.chaine)}</span>${r.image ? `<img src="${esc(r.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">` : ''}<span class="play">${ICON.play}</span>${r.integrale?'<span class="int">Intégrale</span>':''}</button>
       <div class="vbody">
-        <div class="top"><span class="channel">${esc(r.chaine)}</span><span class="fmt" style="--c:var(${f.c})">${esc(r.format)}</span></div>
+        <div class="top"><span class="channel">${esc(r.chaine)}</span><span class="fmt" style="--c:var(${f.c})">${esc(r.format)}</span><span class="tag">${esc(r.plateforme||'YouTube')}</span></div>
         <h3>${esc(r.titre)}</h3>
         <div class="sub">${esc(depuis(r.date))}${(r.personnes||[]).length ? ' · ' + esc(r.personnes.join(', ')) : ''}${vus[r.id] ? ' · déjà ouverte' : ''}</div>
       </div></article>`;
   }).join('') + (liste.length > limite ? `<button class="more-btn" data-act="plus">Afficher plus (${liste.length - limite} restantes)</button>` : '')
-    + `<p class="note">Vidéos publiées par les chaînes sur leurs comptes YouTube officiels. france.tv, TF1+, M6+ et arte.tv n’ont pas de catalogue ouvert : utilisez « Diffusées à la TV » › Replay.</p>`;
+    + `<p class="note">Replays et vidéos repérés sur les sites officiels des chaînes (BFMTV.com, TF1+, LCP, Public Sénat, france.tv, arte.tv…) et leurs comptes YouTube. Certains replays exigent un compte gratuit sur la plateforme.</p>`;
 }
 
 /* ---------- Annonces (presse, Bluesky) */
