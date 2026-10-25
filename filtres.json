@@ -182,7 +182,12 @@
     "la seance est ouverte",
     "politiquement incorrect",
     "c dans l'air l'invite",
-    "l'invite de a la une"
+    "l'invite de a la une",
+    "les gg",
+    "apolline matin",
+    "estelle midi",
+    "rmc story",
+    "face a duhamel"
   ],
   "_aide_personnalites": "Personnalités politiques françaises et étrangères : une émission ou un documentaire qui cite l'un de ces noms est retenu. Noms complets, ou nom seul s'il est sans ambiguïté (évitez « Hollande », « Philippe », « Royal », « Borne », « Le Maire »…).",
   "personnalites_politiques": [
@@ -975,6 +980,16 @@
         "ids": [
           "UCgPYsPyGhhQJQ9zOUQDWDMA"
         ]
+      },
+      {
+        "nom": "Les Grandes Gueules",
+        "handles": [
+          "LesGrandesGueules",
+          "LesGGRMC",
+          "GGRMC",
+          "lesgrandesgueulesrmc"
+        ],
+        "attendu": "gueules"
       }
     ],
     "_aide_plateformes": "Replays des plateformes officielles, repérés dans leurs plans de site publics. motif_url : adresses à garder (pages vidéo/replay) ; chaines_par_url : chaîne déduite de l'adresse. Le diagnostic de chaque passage est dans data/programmes.json (replaysInfo.plateformes).",
@@ -991,8 +1006,9 @@
         "exclure_url": "/(sport|tech|people|economie|crypto|meteo|auto)/",
         "integrales": false,
         "max_resultats": 400,
-        "max_sitemaps": 30,
-        "budget_s": 150
+        "max_sitemaps": 4,
+        "budget_s": 150,
+        "preferer_numeros": "bas"
       },
       {
         "plateforme": "TF1+",
@@ -1137,9 +1153,10 @@
         ],
         "motif_url": "cnews\\.fr/(emission|emissions|videos?|politique)/",
         "integrales": false,
-        "max_sitemaps": 30,
+        "max_sitemaps": 6,
         "budget_s": 150,
-        "max_resultats": 400
+        "max_resultats": 400,
+        "preferer_numeros": "bas"
       },
       {
         "plateforme": "M6+",
@@ -1202,7 +1219,42 @@
         "max_sitemaps": 30,
         "budget_s": 150,
         "max_resultats": 400
+      },
+      {
+        "plateforme": "RMC BFM Play",
+        "nom": "RMC Story",
+        "racine": "https://www.rmcbfmplay.com",
+        "mots_sitemap": [
+          "video",
+          "replay",
+          "emission",
+          "programme"
+        ],
+        "motif_url": "rmcbfmplay\\.com/.+",
+        "chaines_par_url": [
+          [
+            "rmc-story",
+            "RMC Story"
+          ],
+          [
+            "bfmtv",
+            "BFM TV"
+          ],
+          [
+            "rmc-decouverte",
+            "RMC Découverte"
+          ],
+          [
+            "grandes-gueules",
+            "RMC Story"
+          ]
+        ],
+        "integrales": true,
+        "max_sitemaps": 10,
+        "budget_s": 90,
+        "max_resultats": 200
       }
-    ]
+    ],
+    "budget_total_minutes": 11
   }
 }

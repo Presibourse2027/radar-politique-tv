@@ -95,7 +95,7 @@ def sitemaps_du_site(site: dict, info_site: dict) -> list[str]:
     return list(dict.fromkeys(urls))
 
 
-def score_sitemap(url: str, lastmod: datetime | None, mots: list[str], maintenant: datetime) -> float:
+def score_sitemap(url: str, lastmod: datetime | None, mots: list[str], maintenant: datetime, numeros: str = "haut") -> float:
     u = url.lower()
     s = sum(3 for m in mots if m in u)
     if re.search(r"video|replay|programme|emission|news|actu", u):
@@ -109,7 +109,8 @@ def score_sitemap(url: str, lastmod: datetime | None, mots: list[str], maintenan
     if not lastmod:
         m = re.search(r"(\d+)(?:\.xml)?(?:\.gz)?$|page=(\d+)", u)
         if m:
-            s += min(int(m.group(1) or m.group(2)), 999) / 1000
+            n = min(int(m.group(1) or m.group(2)), 999) / 1000
+            s += (1 - n) if numeros == "bas" else n
     # Sitemaps datés dans l'adresse (…-2026-10…) : on privilégie le mois courant
     if maintenant.strftime("%Y-%m") in u or maintenant.strftime("%Y/%m") in u or maintenant.strftime("%Y%m") in u:
         s += 4
@@ -131,7 +132,10 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
     max_sitemaps = int(site.get("max_sitemaps", 8))
 
     while a_lire and len(info["sitemapsLus"]) < max_sitemaps and time.time() - debut < budget_s:
-        a_lire.sort(key=lambda x: score_sitemap(x[0], x[1], mots, maintenant), reverse=True)
+        if time.time() > ECHEANCE:
+            info.setdefault("erreurs", []).append("temps global écoulé")
+            break
+        a_lire.sort(key=lambda x: score_sitemap(x[0], x[1], mots, maintenant, site.get("preferer_numeros", "haut")), reverse=True)
         url, _lm = a_lire.pop(0)
         if url in vus:
             continue
@@ -147,12 +151,15 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
             a_lire += [(u, lm) for u, lm in enfants if u and u not in vus
                        and (not filtre_sm or filtre_sm.search(u)) and not (exclu_sm and exclu_sm.search(u))]
             continue
-        n_ok = 0
+        n_ok, apercu = 0, None
         for u in racine:
             if balise(u) != "url":
                 continue
             loc = texte(u, "loc")
             info["pagesVues"] += 1
+            if apercu is None:  # diagnostic : première adresse et sa date
+                v0, n0 = enfant(u, "video"), enfant(u, "news")
+                apercu = f"{loc[:110]} | {texte(v0, 'publication_date') or texte(n0, 'publication_date') or texte(u, 'lastmod') or 'sans date'}"
             if not loc or not motif.search(loc) or (exclu and exclu.search(loc)):
                 continue
             vid, news = enfant(u, "video"), enfant(u, "news")
@@ -207,6 +214,8 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
             if len(info["exemples"]) < 4:
                 info["exemples"].append(loc)
         info["sitemapsLus"].append(f"{url[-70:]} ({n_ok} retenue(s))")
+        if apercu and len(info.setdefault("apercu", [])) < 6:
+            info["apercu"].append(apercu)
     plafond = int(site.get("max_resultats", 150))
     if len(resultats) > plafond:  # on garde les plus pertinentes puis les plus récentes
         resultats.sort(key=lambda r: (r["score"], r["date"]), reverse=True)
@@ -216,8 +225,14 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
     return resultats, info
 
 
+ECHEANCE = float("inf")
+
+
 def collecter(filtres: dict, det, limite: datetime, affichage: dict):
+    global ECHEANCE
     sites = filtres.get("replays", {}).get("plateformes", [])
+    # Garde-fou : la collecte des plateformes ne dépasse pas ce temps au total (le robot a 20 min)
+    ECHEANCE = time.time() + 60 * float(filtres.get("replays", {}).get("budget_total_minutes", 11))
     tout, infos = [], {}
     for site in sites:
         if site.get("actif") is False:
