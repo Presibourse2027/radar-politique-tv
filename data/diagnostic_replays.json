@@ -1,7 +1,7 @@
 {
-  "genereLe": "2026-10-25T23:05:46Z",
+  "genereLe": "2026-10-25T23:16:25Z",
   "replaysInfo": {
-    "genereLe": "2026-10-25T23:05:46Z",
+    "genereLe": "2026-10-25T23:16:25Z",
     "youtubeIds": {
       "BFMTV": "UCXwDLMDV86ldKoFVc_g8P0g",
       "LCI": "UCewhc0fvja891XkpIPGRMxQ",
@@ -64,7 +64,7 @@
       "C dans l'air": {
         "compte": "C dans l'air - France Télévisions",
         "lues": 15,
-        "retenues": 6
+        "retenues": 7
       },
       "C à vous": {
         "compte": "C à vous - France Télévisions",
@@ -132,7 +132,7 @@
         ],
         "pagesVues": 15000,
         "pagesRecentes": 1273,
-        "retenues": 400,
+        "retenues": 350,
         "exemples": [
           "https://www.bfmtv.com/politique/la-france-insoumise/video-emmanuel-macron-n-est-plus-en-capacite-aujourd-hui-d-assurer-une-paix-sociale-dans-notre-pays-affirme-manon-aubry-deputee-europeenne-lfi_VN-202610250387.html",
           "https://www.bfmtv.com/politique/la-france-insoumise/video-manifestations-en-france-nous-sommes-des-non-violents-par-adhesion-politique-et-par-necessite-politique-affirme-manon-aubry-deputee-europeenne-lfi_VN-202610250382.html",
@@ -144,7 +144,7 @@
           "https://www.bfmtv.com/replay-emissions/bfm-grand-soir/video-31-decembre-en-direct-des-champs-elysees-31-12_VN- | 2025-12-31T23:54:41.000Z",
           "https://www.bfmtv.com/societe/bfmtv-vous-souhaite-une-tres-bonne-annee-2025_VN-202412310602.html | 2024-12-31T23:18:10.000Z"
         ],
-        "duree_s": 4
+        "duree_s": 3
       },
       "TF1+": {
         "sitemapsLus": [
@@ -196,7 +196,7 @@
           "https://www.tf1.fr/tf1/bonjour-la-matinale-tf1/videos/bonjour-la-matinale-tf1-on-vous-repond-boites-aux-lettre | 2024-04-24T07:46:00+02:00",
           "https://www.tf1.fr/fr-dz/tf1/pour-sarah/news/pour-sarah-francois-rozon-pourquoi-jai-choisi-de-partager-lhistoi | 2019-10-03T23:15:50+02:00"
         ],
-        "duree_s": 168
+        "duree_s": 119
       },
       "LCI.fr": {
         "sitemapsLus": [
@@ -248,7 +248,7 @@
           "https://www.tf1info.fr/international/intensification-des-combats-pas-de-decision-sur-les-livraisons-de-chars-l | 2023-01-21T07:41:30.186+01:00",
           "https://www.tf1info.fr/voyages/video-herault-le-mont-caroux-destination-ideale-de-l-ete-pour-les-amoureux-de-l | 2023-06-02T17:12:59.134+02:00"
         ],
-        "duree_s": 66
+        "duree_s": 61
       },
       "LCP.fr": {
         "sitemapsLus": [
@@ -284,7 +284,7 @@
           "https://lcp.fr/sitemap.xml.gz : HTTP Error 404: Not Found",
           "https://lcp.fr/sitemap_index.xml : HTTP Error 404: Not Found"
         ],
-        "duree_s": 17
+        "duree_s": 13
       },
       "Public Sénat": {
         "sitemapsLus": [
@@ -336,7 +336,7 @@
           "https://www.publicsenat.fr/emission/avoir-20-ans/20-ans-et-chefs-dentreprise-e5 | 2026-10-09T06:03:20+00:00",
           "/actualites/culture | 2026-10-09T14:11:53+00:00"
         ],
-        "duree_s": 27
+        "duree_s": 21
       },
       "france.tv": {
         "sitemapsLus": [
@@ -366,14 +366,14 @@
           "https://www.france.tv/sitemaps/program/france-5_c-ce-soir.xml (6 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-5_c-dans-l-air.xml (19 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-5_c-politique.xml (2 retenue(s))",
-          "tps://www.france.tv/sitemaps/program/france-5_c-politique-la-suite.xml (2 retenue(s))",
+          "tps://www.france.tv/sitemaps/program/france-5_c-politique-la-suite.xml (1 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-2_cash-investigation.xml (0 retenue(s))",
           "tps://www.france.tv/sitemaps/program/france-2_complement-d-enquete.xml (4 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-2_debat.xml (0 retenue(s))"
         ],
-        "pagesVues": 5023,
-        "pagesRecentes": 649,
-        "retenues": 175,
+        "pagesVues": 5022,
+        "pagesRecentes": 648,
+        "retenues": 174,
         "exemples": [
           "https://www.france.tv/france-2/flash-special-presidentielle-2022/3261832-emission-du-dimanche-10-avril-2022.html",
           "https://www.france.tv/france-2/flash-special-presidentielle-2022/3261832-emission-du-dimanche-10-avril-2022.html",
@@ -388,7 +388,7 @@
           "https://www.france.tv/france-2/l-emission-politique/saison-1/141887-france-la-nouvelle-donne.html | 2025-09-17T11:12:45+02:00",
           "https://www.france.tv/france-2/l-emission-politique/l-emission-politique-saison-3/985703-europeennes-le-debat- | 2025-09-17T10:13:55+02:00"
         ],
-        "duree_s": 10
+        "duree_s": 4
       },
       "arte.tv": {
         "sitemapsLus": [
@@ -444,7 +444,7 @@
           "https://www.cnews.fr/france/2012-04-10/attentats-du-flnc-16-ans-requis-lencontre-de-pasqualaggi-16154 | 2012-04-10T23:41:02+02:00",
           "https://www.cnews.fr/france/2012-04-25/quelque-150-feministes-appellent-voter-francois-hollande-20988 | 2012-04-25T11:30:01+02:00"
         ],
-        "duree_s": 5
+        "duree_s": 3
       },
       "M6+": {
         "sitemapsLus": [
@@ -496,66 +496,50 @@
           "https://www.m6.fr/pokemon-p_17017/le-premier-match-extreme-c_13065686 | sans date",
           "https://www.m6.fr/pokemon-p_17017/tempete-de-neige-c_13064164 | sans date"
         ],
-        "duree_s": 24
-      },
-      "RMC BFM Play": {
-        "sitemapsLus": [],
-        "pagesVues": 0,
-        "pagesRecentes": 0,
-        "retenues": 0,
-        "exemples": [],
-        "erreurs": [
-          "https://www.rmcbfmplay.com/sitemap.xml : HTTP Error 404: Not Found",
-          "https://www.rmcbfmplay.com/sitemap_index.xml : HTTP Error 404: Not Found",
-          "https://www.rmcbfmplay.com/sitemaps/sitemap.xml : HTTP Error 404: Not Found"
-        ],
-        "duree_s": 2
+        "duree_s": 4
       },
       "myCANAL": {
         "sitemapsLus": [
+          "index https://www.canalplus.com/sitemaps.xml (109)",
           "index https://www.canalplus.com/bf/sitemaps-h/ (80)",
-          "https://www.canalplus.com/bf/sitemaps-h/sitemap_bf_1.xml (0 retenue(s))",
-          "https://www.canalplus.com/bf/sitemaps-h/sitemap_bf_2.xml (0 retenue(s))",
-          "https://www.canalplus.com/bf/sitemaps-h/sitemap_bf_3.xml (0 retenue(s))",
-          "https://www.canalplus.com/bf/sitemaps-h/sitemap_bf_4.xml (0 retenue(s))",
-          "https://www.canalplus.com/bf/sitemaps-h/sitemap_bf_5.xml (0 retenue(s))"
+          "index https://www.canalplus.com/bi/sitemaps-h/ (80)",
+          "index https://www.canalplus.com/bj/sitemaps-h/ (80)",
+          "index https://www.canalplus.com/bl/sitemaps-h/ (45)",
+          "https://www.canalplus.com/bl/sitemaps-h/sitemap_bl_1.xml (0 retenue(s))",
+          "https://www.canalplus.com/bl/sitemaps-h/sitemap_bl_2.xml (0 retenue(s))",
+          "https://www.canalplus.com/bl/sitemaps-h/sitemap_bl_3.xml (0 retenue(s))"
         ],
-        "pagesVues": 7085,
-        "pagesRecentes": 0,
+        "pagesVues": 6215,
+        "pagesRecentes": 3459,
         "retenues": 0,
         "exemples": [],
-        "erreurs": [
-          "https://www.canalplus.com/sitemaps.xml : The read operation timed out"
-        ],
         "apercu": [
-          "https://www.canalplus.com/bf/telefilms/le-prix-du-secret/h/10000330_50001 | sans date",
-          "https://www.canalplus.com/bf/cinema/top-gun/h/148619_50001 | sans date",
-          "https://www.canalplus.com/bf/jeunesse/art-land/h/18796311_50427 | sans date",
-          "https://www.canalplus.com/bf/divertissement/arts24/h/22860115_50115 | sans date",
-          "https://www.canalplus.com/bf/cinema/moi-moche-et-mechant-2/h/2653119_50555 | sans date"
+          "https://www.canalplus.com/bl/telefilms/braquage-de-sang/h/10005235_50007 | sans date",
+          "https://www.canalplus.com/bl/divertissement/matinale-semaine-cnews/h/14580316_50213 | sans date",
+          "https://www.canalplus.com/bl/cinema/nonreg_hd_vm_20_sme/h/17072702_50257 | sans date"
         ],
-        "duree_s": 29
+        "duree_s": 4
       }
     },
     "lues": 300,
-    "nouvelles": 1368,
-    "total": 1500
+    "nouvelles": 1318,
+    "total": 1314
   },
-  "nombreReplays": 1500,
+  "nombreReplays": 1314,
   "parSection": {
-    "politique": 1257,
-    "documentaire": 18
+    "politique": 1069,
+    "documentaire": 20
   },
   "parPlateforme": {
     "M6+": 4,
-    "YouTube": 137,
-    "france.tv": 101,
-    "BFMTV.com": 579,
+    "YouTube": 138,
+    "france.tv": 105,
+    "BFMTV.com": 350,
     "CNews.fr": 19,
-    "LCI.fr": 65,
-    "TF1+": 141,
-    "Public Sénat": 155,
+    "LCI.fr": 70,
+    "TF1+": 158,
+    "Public Sénat": 160,
     "arte.tv": 248,
-    "LCP.fr": 51
+    "LCP.fr": 62
   }
 }
