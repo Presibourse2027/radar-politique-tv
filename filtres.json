@@ -715,7 +715,7 @@
     "_aide": "Vidéos politiques à la demande publiées par les chaînes officielles sur YouTube. Pour chaque chaîne : identifiants techniques (ids) ou noms @ à essayer (handles, sans @), et un mot attendu dans le nom du compte pour éviter les homonymes.",
     "actif": true,
     "jours_conserves": 14,
-    "nombre_maximum": 600,
+    "nombre_maximum": 1500,
     "exclure_shorts": true,
     "chaines_youtube": [
       {
@@ -884,9 +884,11 @@
           "video",
           "replay"
         ],
-        "motif_url": "/(videos?|replay|emissions?)/|_VN-|_AV-",
+        "motif_url": "bfmtv\\.com/(politique/|replay|emissions?/)",
         "exclure_url": "/(sport|tech|people|economie|crypto|meteo|auto)/",
-        "integrales": false
+        "integrales": false,
+        "max_resultats": 200,
+        "max_sitemaps": 3
       },
       {
         "plateforme": "TF1+",
@@ -912,7 +914,11 @@
             "TMC"
           ]
         ],
-        "integrales": true
+        "integrales": true,
+        "exclure_sitemap": "fr-be|fr-ch|fr-lu",
+        "max_sitemaps": 20,
+        "budget_s": 180,
+        "max_resultats": 200
       },
       {
         "plateforme": "LCI.fr",
@@ -922,8 +928,10 @@
           "video",
           "news"
         ],
-        "motif_url": "/(politique|elections?)/|video",
-        "integrales": false
+        "motif_url": "tf1info\\.fr/(politique|elections)/",
+        "integrales": false,
+        "max_sitemaps": 4,
+        "max_resultats": 100
       },
       {
         "plateforme": "LCP.fr",
@@ -936,7 +944,13 @@
           "documentaire"
         ],
         "motif_url": "lcp\\.fr/(programmes|documentaires|emissions|videos|replay)/",
-        "integrales": true
+        "integrales": true,
+        "sitemaps": [
+          "https://lcp.fr/sitemap.xml",
+          "https://lcp.fr/sitemap.xml.gz",
+          "https://lcp.fr/sitemap_index.xml"
+        ],
+        "max_sitemaps": 15
       },
       {
         "plateforme": "Public Sénat",
@@ -948,8 +962,9 @@
           "documentaire",
           "programme"
         ],
-        "motif_url": "publicsenat\\.fr/(emissions|documentaires|videos?|replay|programmes?)/",
-        "integrales": true
+        "motif_url": "publicsenat\\.fr/(emission|emissions|documentaire|documentaires|video|videos|programme|programmes|replay)/",
+        "integrales": true,
+        "max_sitemaps": 14
       },
       {
         "plateforme": "france.tv",
@@ -980,7 +995,11 @@
             "franceinfo"
           ]
         ],
-        "integrales": true
+        "integrales": true,
+        "filtre_sitemap": "programs_index|c-dans-l-air|c-ce-soir|c-politique|c-a-vous|l-evenement|complement-d-enquete|envoye-special|les-4-verites|dimanche-en-politique|cash-investigation|questions-politiques|politique|election|presidentielle|face-a-face|debat|documentaire|infrarouge|la-france-en-vrai|le-monde-en-face|l-oeil-du-20h|vous-avez-la-parole",
+        "max_sitemaps": 30,
+        "budget_s": 150,
+        "max_resultats": 200
       },
       {
         "plateforme": "arte.tv",
@@ -992,7 +1011,10 @@
           "program"
         ],
         "motif_url": "arte\\.tv/fr/videos/",
-        "integrales": true
+        "integrales": true,
+        "filtre_sitemap": "sitemap\\.xml|fr_programs",
+        "max_resultats": 150,
+        "format_defaut": "Documentaire"
       },
       {
         "plateforme": "CNews.fr",
@@ -1002,8 +1024,9 @@
           "video",
           "emission"
         ],
-        "motif_url": "cnews\\.fr/(emission|videos?)/",
-        "integrales": false
+        "motif_url": "cnews\\.fr/(emission|emissions|videos?|politique)/",
+        "integrales": false,
+        "max_sitemaps": 6
       },
       {
         "plateforme": "M6+",
@@ -1014,7 +1037,8 @@
           "program"
         ],
         "motif_url": "m6\\.fr/.+-(p|c)_\\d+",
-        "integrales": true
+        "integrales": true,
+        "actif": false
       }
     ]
   }

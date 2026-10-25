@@ -25,7 +25,7 @@ from datetime import datetime, timedelta, timezone
 from collect import classer, est_documentaire, iso, norm, trouve
 
 UA = "Mozilla/5.0 (Linux; Android 14; SM-S921B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36"
-TAILLE_MAX = 25_000_000
+TAILLE_MAX = 90_000_000
 
 
 def lire(url: str, timeout: int = 25) -> bytes:
@@ -105,6 +105,11 @@ def score_sitemap(url: str, lastmod: datetime | None, mots: list[str], maintenan
     if lastmod:
         jours = (maintenant - lastmod).total_seconds() / 86400
         s += 4 if jours < 2 else 2 if jours < 15 else -4 if jours > 60 else 0
+    # Sans date : on privilégie les numéros les plus élevés (souvent les plus récents)
+    if not lastmod:
+        m = re.search(r"(\d+)(?:\.xml)?(?:\.gz)?$|page=(\d+)", u)
+        if m:
+            s += min(int(m.group(1) or m.group(2)), 999) / 1000
     # Sitemaps datés dans l'adresse (…-2026-10…) : on privilégie le mois courant
     if maintenant.strftime("%Y-%m") in u or maintenant.strftime("%Y/%m") in u or maintenant.strftime("%Y%m") in u:
         s += 4
@@ -112,6 +117,9 @@ def score_sitemap(url: str, lastmod: datetime | None, mots: list[str], maintenan
 
 
 def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s: int = 75):
+    budget_s = int(site.get("budget_s", budget_s))
+    filtre_sm = re.compile(site["filtre_sitemap"], re.I) if site.get("filtre_sitemap") else None
+    exclu_sm = re.compile(site["exclure_sitemap"], re.I) if site.get("exclure_sitemap") else None
     debut = time.time()
     maintenant = datetime.now(timezone.utc)
     info = {"sitemapsLus": [], "pagesVues": 0, "pagesRecentes": 0, "retenues": 0, "exemples": []}
@@ -136,7 +144,8 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
         if balise(racine) == "sitemapindex":
             enfants = [(texte(s, "loc"), date_iso(texte(s, "lastmod"))) for s in racine if balise(s) == "sitemap"]
             info["sitemapsLus"].append(f"index {url[-70:]} ({len(enfants)})")
-            a_lire += [(u, lm) for u, lm in enfants if u and u not in vus]
+            a_lire += [(u, lm) for u, lm in enfants if u and u not in vus
+                       and (not filtre_sm or filtre_sm.search(u)) and not (exclu_sm and exclu_sm.search(u))]
             continue
         n_ok = 0
         for u in racine:
@@ -168,6 +177,9 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                 continue
             score, raisons = res
             tn, dn = norm(titre), norm(desc)
+            fmt = classer(tn, dn, norm(chaine), est_documentaire(tn + " " + norm(loc), dn, []))
+            if fmt == "Magazine politique" and site.get("format_defaut"):
+                fmt = site["format_defaut"]
             noms = trouve(det.personnes, tn + " " + dn)
             noms = [n for n in noms if not any(n != m and n in m for m in noms)]
             resultats.append({
@@ -178,7 +190,7 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                 "lien": loc,
                 "image": image if image.startswith("https://") else "",
                 "date": iso(date),
-                "format": classer(tn, dn, norm(chaine), est_documentaire(tn + " " + norm(loc), dn, [])),
+                "format": fmt,
                 "personnes": [affichage.get(n, n.title()) for n in noms][:4],
                 "resume": desc[:300],
                 "integrale": bool(site.get("integrales", False)),
@@ -190,6 +202,10 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
             if len(info["exemples"]) < 4:
                 info["exemples"].append(loc)
         info["sitemapsLus"].append(f"{url[-70:]} ({n_ok} retenue(s))")
+    plafond = int(site.get("max_resultats", 150))
+    if len(resultats) > plafond:  # on garde les plus pertinentes puis les plus récentes
+        resultats.sort(key=lambda r: (r["score"], r["date"]), reverse=True)
+        resultats = resultats[:plafond]
     info["retenues"] = len(resultats)
     info["duree_s"] = round(time.time() - debut)
     return resultats, info
