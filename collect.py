@@ -494,6 +494,16 @@ def main() -> int:
     chemin = Path(args.sortie)
     chemin.parent.mkdir(parents=True, exist_ok=True)
     chemin.write_text(json.dumps(sortie, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # Diagnostic des replays, dans un fichier séparé et lisible (data/diagnostic_replays.json)
+    diag = {"genereLe": sortie.get("genereLe", ""), "replaysInfo": sortie.get("replaysInfo", {}),
+            "nombreReplays": len(sortie.get("replays", [])),
+            "parSection": {s_: sum(1 for r in sortie.get("replays", []) if r.get("section") == s_)
+                           for s_ in ("politique", "documentaire")},
+            "parPlateforme": {}}
+    for r in sortie.get("replays", []):
+        diag["parPlateforme"][r.get("plateforme", "?")] = diag["parPlateforme"].get(r.get("plateforme", "?"), 0) + 1
+    (chemin.parent / "diagnostic_replays.json").write_text(
+        json.dumps(diag, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"{len(programmes)} émission(s) politique(s) retenue(s) sur {total} programmes "
           f"et {nb_chaines} chaînes → {chemin}")
     return 0
