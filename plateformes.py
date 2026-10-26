@@ -189,6 +189,10 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
                 if re.search(rx, loc, re.I):
                     chaine = nom
                     break
+            for rx, nom in site.get("chaines_par_titre", []):  # agrégateurs (myCANAL) : chaîne d'origine
+                if re.search(rx, norm(titre)):
+                    chaine = nom
+                    break
             res = det.evaluer(titre, "", desc[:500], [], chaine)
             theme = ""
             if not res:

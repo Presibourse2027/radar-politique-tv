@@ -503,7 +503,6 @@
     "Fabius",
     "Jaurès",
     "Clemenceau",
-    "Pasqua",
     "Delors",
     "Odoul",
     "Autain",
@@ -1233,7 +1232,7 @@
           "canal"
         ],
         "motif_url": "canalplus\\.com/.+",
-        "exclure_url": "canalplus\\.com/(bf|ch|be|ci|sn|cm|ga|cd|cg|bj|tg|ml|ne|gn|mg|mu|re|gp|mq|gf|nc|pf|pl|at|it)/|/(sport|cinema|films?|series|jeunesse|kids|telefilms|offres?|abonnement|aide)/",
+        "exclure_url": "canalplus\\.com/(bf|ch|be|ci|sn|cm|ga|cd|cg|bj|tg|ml|ne|gn|mg|mu|re|gp|mq|gf|nc|pf|pl|at|it)/|/(sport|cinema|films?|series|jeunesse|kids|telefilms|offres?|abonnement|aide)/|dimanche-en-politique-[a-z]|-en-regions?\\b",
         "chaines_par_url": [
           [
             "cnews",
@@ -1258,7 +1257,45 @@
         "max_resultats": 150,
         "sans_date": true,
         "exclure_sitemap": "canalplus\\.com/(?!fr/)[a-z]{2}/",
-        "filtre_sitemap": "canalplus\\.com/(fr/)?sitemaps"
+        "filtre_sitemap": "canalplus\\.com/(fr/)?sitemaps",
+        "chaines_par_titre": [
+          [
+            "dimanche en politique",
+            "France 3"
+          ],
+          [
+            "les informes|vrai ou faux|le grand enjeu|l'invite politique|a suivre",
+            "franceinfo"
+          ],
+          [
+            "c dans l'air|c politique|c ce soir|c a vous|la grande librairie",
+            "France 5"
+          ],
+          [
+            "complement d'enquete|envoye special|l'evenement|les 4 verites|cash investigation|13h15",
+            "France 2"
+          ],
+          [
+            "heure des pros|punchline|face a l'info|100% politique|cnews",
+            "CNews"
+          ],
+          [
+            "quotidien",
+            "TMC"
+          ],
+          [
+            "zone interdite|capital|66 minutes|enquete exclusive",
+            "M6"
+          ],
+          [
+            "sens public|100% senat",
+            "Public Sénat"
+          ],
+          [
+            "bonjour chez vous|ca vous regarde",
+            "LCP"
+          ]
+        ]
       }
     ],
     "budget_total_minutes": 11,

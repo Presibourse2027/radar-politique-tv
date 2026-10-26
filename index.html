@@ -159,6 +159,7 @@ nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:re
 .toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:60;opacity:0;transition:.2s;pointer-events:none;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translateX(-50%)}
 .hidden{display:none!important}
+.tag.dispo{border-color:transparent;background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok);font-weight:700}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--surface2);padding:4px;border-radius:12px;margin:16px 0 4px}
 .seg button{height:38px;border-radius:9px;font-weight:600;font-size:14px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:var(--shadow)}
@@ -442,6 +443,39 @@ function infoFaute(p){
   return parts.length ? `<div class="sub fallback">${esc(parts.join(' · '))}</div>` : '';
 }
 
+/* ---------- Rapprochement émission diffusée ↔ replay du catalogue */
+const cleCh = s => norm(s).replace(/[^a-z0-9+]/g, '');
+const ALIAS_CH = {bfmtv:'bfmtv', bfm:'bfmtv', lachaineinfo:'lci', franceinfotv:'franceinfo', lcpassembleenationale:'lcp', rmcstory:'rmc', tf1info:'tf1'};
+const cleCanon = s => { const k = cleCh(s); return ALIAS_CH[k] || k; };
+const motsTitre = s => norm(s).replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(m => m.length > 3);
+let indexReplays = null, indexReplaysSrc = null;
+function replayPour(p){
+  const src = grille?.replays || [];
+  if (indexReplaysSrc !== src){ // index par chaîne, reconstruit quand le catalogue change
+    indexReplaysSrc = src; indexReplays = {};
+    src.forEach(r => { (indexReplays[cleCanon(r.chaine)] ||= []).push(r); });
+  }
+  const t0 = new Date(p.debut).getTime();
+  const tp = norm(p.titre).replace(/[^a-z0-9 ]/g, ' ').trim(), mp = motsTitre(p.titre);
+  if (tp.length < 4) return null;
+  // Candidats : même chaîne, ou compte YouTube portant le nom de l'émission (ex. « C dans l'air »)
+  const cands = [...(indexReplays[cleCanon(p.chaine)] || []), ...(indexReplays[cleCanon(p.titre)] || [])];
+  let best = null, bestScore = 0;
+  for (const r of cands){
+    const tr = new Date(r.date).getTime();
+    if (tr < t0 - 3*36e5 || tr > t0 + 4*864e5) continue;
+    const titreR = norm(r.titre).replace(/[^a-z0-9 ]/g, ' ');
+    let sc = 0;
+    if (cleCanon(r.chaine) === cleCanon(p.titre)) sc = 0.9;
+    else if (tp.length >= 5 && titreR.includes(tp)) sc = 1;
+    else { const u = [...new Set(mp)]; if (u.length >= 3){ const mr = new Set(motsTitre(r.titre)); sc = u.filter(m => mr.has(m)).length / u.length; } }
+    if (r.integrale) sc += 0.05;
+    sc -= Math.abs(tr - t0) / (40*864e5); // à pertinence égale, le plus proche de la diffusion
+    if (sc > bestScore){ bestScore = sc; best = r; }
+  }
+  return bestScore >= 0.75 ? best : null;
+}
+
 function carte(p){
   const d = new Date(p.debut), now = Date.now();
   const live = enDirect(p, now), fini = passe(p, now);
@@ -455,10 +489,13 @@ function carte(p){
   const tags = [
     live ? '<span class="tag live">En direct</span>' : '',
     p.rediffusion ? '<span class="tag">Rediffusion</span>' : '',
-    p._source === 'manuel' ? '<span class="tag">Ajout manuel</span>' : ''
+    p._source === 'manuel' ? '<span class="tag">Ajout manuel</span>' : '',
+    fini && replayPour(p) ? `<span class="tag dispo">Replay ${esc(replayPour(p).plateforme || 'YouTube')}</span>` : ''
   ].join('');
+  const rep = fini ? replayPour(p) : null;
   const action2 = fini
-    ? `<button class="act" data-act="replay" data-id="${esc(p.id)}">${ICON.play}Replay</button>`
+    ? (rep ? `<button class="act" data-act="regarder" data-id="${esc(rep.id)}" data-url="${esc(rep.lien)}">${ICON.play}Voir le replay</button>`
+           : `<button class="act" data-act="replay" data-id="${esc(p.id)}">${ICON.search}Chercher le replay</button>`)
     : live
       ? `<button class="act" data-act="site" data-id="${esc(p.id)}">${ICON.live}Regarder</button>`
       : '';
@@ -596,7 +633,14 @@ function rendreDemande(){
   if (!tous.length) return vide('Catalogue en préparation', grille?.replaysInfo?.erreur ? 'La collecte des replays a échoué au dernier passage.' : 'Les vidéos des chaînes apparaîtront après le prochain passage du robot.');
   if (!liste.length) return outils + vide('Aucune vidéo', 'Aucun replay ne correspond à ces filtres.');
   const vus = LS.get('rpt.vus', {});
-  return outils + `<div class="sec"><h2>Vidéos des chaînes</h2><span class="count">${liste.length}</span></div>` + liste.slice(0, limite).map(r => {
+  // Émissions diffusées ces 3 derniers jours dont le replay a été retrouvé (vue « diffusées » fusionnée)
+  const now = Date.now();
+  const diff = section === 'politique' && !integralesSeules ? filtrer(toutesEmissions().filter(p => passe(p, now) && now - finEstimee(p).getTime() < 3*864e5))
+    .map(p => [p, replayPour(p)]).filter(([, r]) => r).sort((a, b) => new Date(b[0].debut) - new Date(a[0].debut)) : [];
+  const vusR = new Set(diff.map(([, r]) => r.id));
+  const blocDiff = diff.length ? `<div class="sec"><h2>Diffusées récemment · replay trouvé</h2><span class="count">${diff.length}</span></div>` + diff.slice(0, 12).map(([p]) => carte(p)).join('') : '';
+  const listeSans = liste.filter(r => !vusR.has(r.id));
+  return outils + blocDiff + `<div class="sec"><h2>Vidéos des chaînes</h2><span class="count">${listeSans.length}</span></div>` + listeSans.slice(0, limite).map(r => {
     const f = FORMATS[r.format] || FORMATS['Magazine politique'];
     return `<article class="vcard${vus[r.id]?' vu':''}">
       <button class="vthumb" data-act="regarder" data-id="${esc(r.id)}" data-url="${esc(r.lien)}" aria-label="Regarder"><span class="ph">${esc(r.chaine)}</span>${r.image ? `<img src="${esc(r.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'">` : ''}<span class="play">${ICON.play}</span>${r.integrale?'<span class="int">Intégrale</span>':''}</button>
@@ -605,7 +649,7 @@ function rendreDemande(){
         <h3>${esc(r.titre)}</h3>
         <div class="sub">${esc(depuis(r.date))}${(r.personnes||[]).length ? ' · ' + esc(r.personnes.join(', ')) : ''}${vus[r.id] ? ' · déjà ouverte' : ''}</div>
       </div></article>`;
-  }).join('') + (liste.length > limite ? `<button class="more-btn" data-act="plus">Afficher plus (${liste.length - limite} restantes)</button>` : '')
+  }).join('') + (listeSans.length > limite ? `<button class="more-btn" data-act="plus">Afficher plus (${listeSans.length - limite} restantes)</button>` : '')
     + `<p class="note">Vidéos publiées par les chaînes. Certaines exigent un compte gratuit.</p>`;
 }
 
