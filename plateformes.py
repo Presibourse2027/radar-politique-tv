@@ -76,10 +76,17 @@ def titre_depuis_url(url: str) -> str:
     morceaux = [m for m in chemin.split("/") if m]
     if not morceaux:
         return ""
-    dernier = re.sub(r"\.(html?|php)$", "", morceaux[-1])
-    if re.fullmatch(r"[\d_-]+|video|videos|replay", dernier) and len(morceaux) > 1:
-        dernier = morceaux[-2]
-    dernier = re.sub(r"[_-]?(\d{4,}|[a-z]{1,3}\d+[a-z\d]*)$", "", dernier)  # identifiants en fin d'adresse
+    # On remonte l'adresse jusqu'au premier segment « parlant » (ex. myCANAL : /emission/titre/h/123_456)
+    dernier = ""
+    for seg in reversed(morceaux):
+        seg = re.sub(r"\.(html?|php)$", "", seg)
+        if re.fullmatch(r"[\d_-]+|video|videos|replay|[a-z]{1,2}", seg):
+            continue
+        dernier = seg
+        break
+    if not dernier:
+        return ""
+    dernier = re.sub(r"[_-](\d{3,}|[a-z]{1,3}\d+[a-z\d]*)$", "", dernier)  # identifiants en fin d'adresse
     mots = re.sub(r"[-_]+", " ", dernier).strip()
     return mots[:1].upper() + mots[1:] if mots else ""
 

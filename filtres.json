@@ -1263,11 +1263,12 @@
           ]
         ],
         "integrales": true,
-        "max_sitemaps": 8,
+        "max_sitemaps": 12,
         "budget_s": 60,
         "max_resultats": 150,
         "sans_date": true,
-        "exclure_sitemap": "canalplus\\.com/(bf|ch|be|ci|sn|cm|ga|cd|cg|bj|tg|ml|ne|gn|mg|mu|re|gp|mq|gf|nc|pf|pl|at|it|et|rw|bi|mr|td|cf|dj|ht|km|vn|mm)/"
+        "exclure_sitemap": "canalplus\\.com/[a-z]{2}/",
+        "filtre_sitemap": "canalplus\\.com/sitemaps"
       }
     ],
     "budget_total_minutes": 11,

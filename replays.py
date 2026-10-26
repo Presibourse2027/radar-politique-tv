@@ -173,7 +173,10 @@ def collecter(filtres: dict, det, anciens: list[dict], ids_connus: dict, dossier
                 "plateforme": "YouTube",
             })
             gardees += 1
-        info["chaines"][nom] = {"compte": titre_chaine, "lues": len(videos), "retenues": gardees}
+        info["chaines"][nom] = {"compte": titre_chaine, "lues": len(videos), "retenues": gardees,
+                                "shorts": sum(1 for v in videos if v["short"]),
+                                "plusRecente": iso(max(v["date"] for v in videos)) if videos else "",
+                                "exemple": videos[0]["titre"][:90] if videos else ""}
 
     # Plateformes officielles (plans de site publics) : bfmtv.com, tf1.fr, lcp.fr, france.tv…
     if not dossier_test:
