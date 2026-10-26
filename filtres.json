@@ -951,7 +951,8 @@
         "handles": [
           "RMC"
         ],
-        "attendu": "rmc"
+        "attendu": "rmc",
+        "tout_retenir": true
       },
       {
         "nom": "Sud Radio",
@@ -981,17 +982,6 @@
         "ids": [
           "UCgPYsPyGhhQJQ9zOUQDWDMA"
         ]
-      },
-      {
-        "nom": "Les Grandes Gueules",
-        "handles": [
-          "LesGrandesGueules",
-          "LesGGRMC",
-          "GGRMC",
-          "lesgrandesgueulesrmc"
-        ],
-        "attendu": "gueules",
-        "tout_retenir": true
       },
       {
         "nom": "Canal+",
