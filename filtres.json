@@ -1257,8 +1257,8 @@
         "budget_s": 60,
         "max_resultats": 150,
         "sans_date": true,
-        "exclure_sitemap": "canalplus\\.com/[a-z]{2}/",
-        "filtre_sitemap": "canalplus\\.com/sitemaps"
+        "exclure_sitemap": "canalplus\\.com/(?!fr/)[a-z]{2}/",
+        "filtre_sitemap": "canalplus\\.com/(fr/)?sitemaps"
       }
     ],
     "budget_total_minutes": 11,

@@ -134,7 +134,8 @@ def collecter_site(site: dict, det, limite: datetime, affichage: dict, budget_s:
     motif = re.compile(site.get("motif_url", "."), re.I)
     exclu = re.compile(site["exclure_url"], re.I) if site.get("exclure_url") else None
     mots = [m.lower() for m in site.get("mots_sitemap", [])]
-    a_lire = [(u, None) for u in sitemaps_du_site(site, info)]
+    a_lire = [(u, None) for u in sitemaps_du_site(site, info)
+              if not (exclu_sm and exclu_sm.search(u))]
     vus, resultats = set(), []
     max_sitemaps = int(site.get("max_sitemaps", 8))
 
