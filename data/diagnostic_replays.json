@@ -1,7 +1,7 @@
 {
-  "genereLe": "2026-11-09T11:44:58Z",
+  "genereLe": "2026-11-09T23:02:00Z",
   "replaysInfo": {
-    "genereLe": "2026-11-09T11:44:58Z",
+    "genereLe": "2026-11-09T23:02:00Z",
     "youtubeIds": {
       "BFMTV": "UCXwDLMDV86ldKoFVc_g8P0g",
       "LCI": "UCewhc0fvja891XkpIPGRMxQ",
@@ -24,81 +24,81 @@
         "compte": "BFMTV",
         "lues": 15,
         "retenues": 3,
-        "shorts": 9,
-        "plusRecente": "2026-11-09T11:20:16Z",
-        "exemple": "Boxe: le combat du Français Mourad Aliev vire à la bagarre générale en Turquie"
+        "shorts": 12,
+        "plusRecente": "2026-11-09T21:21:04Z",
+        "exemple": "Brest: un hommage rendu au lycée de Mounaissa, tuée et violée par son père"
       },
       "LCI": {
         "compte": "LCI",
         "lues": 15,
-        "retenues": 6,
+        "retenues": 5,
         "shorts": 2,
-        "plusRecente": "2026-11-09T09:57:48Z",
-        "exemple": "Affaire Michel Zecler : Jean-Pascal Zadi dénonce les conditions d'accueil au procès"
+        "plusRecente": "2026-11-09T22:34:43Z",
+        "exemple": "Les Partis Pris : \"La politique est un sport de combat\", \"Nvidia : amour, puces et trahiso"
       },
       "CNews": {
         "compte": "CNEWS",
         "lues": 15,
-        "retenues": 7,
+        "retenues": 4,
         "shorts": 0,
-        "plusRecente": "2026-11-09T11:41:17Z",
-        "exemple": "Roland Lescure : «Le relèvement du plafond de la prime carburant sera prolongé en 2027»"
+        "plusRecente": "2026-11-09T22:35:42Z",
+        "exemple": "Ophélie Roque : «On arrive dans une société où tout est mis sur le même niveau»"
       },
       "franceinfo": {
         "compte": "franceinfo",
         "lues": 15,
-        "retenues": 8,
+        "retenues": 5,
         "shorts": 3,
-        "plusRecente": "2026-11-09T11:22:51Z",
-        "exemple": "La conférence sociale va-t-elle calmer la colère de la rue ?"
+        "plusRecente": "2026-11-09T22:31:17Z",
+        "exemple": "Cyberattaque contre des supermarchés : la France accuse l'Iran"
       },
       "LCP": {
         "compte": "LCP - Assemblée nationale",
         "lues": 15,
-        "retenues": 5,
-        "shorts": 5,
-        "plusRecente": "2026-11-09T11:30:29Z",
-        "exemple": "Un député se défend de mettre en danger les détenteurs de cryptos avec son amendement"
+        "retenues": 6,
+        "shorts": 4,
+        "plusRecente": "2026-11-09T20:00:02Z",
+        "exemple": "13-Novembre : comment vivre avec le souvenir des attentats ? | Les débats de Débatdoc"
       },
       "Public Sénat": {
         "compte": "Public Sénat",
         "lues": 15,
-        "retenues": 6,
-        "shorts": 6,
-        "plusRecente": "2026-11-09T11:18:12Z",
-        "exemple": "« Ce seront les plus les plus fragiles qui paieront la note »"
+        "retenues": 5,
+        "shorts": 4,
+        "plusRecente": "2026-11-09T19:32:34Z",
+        "exemple": "Réchauffement : Nos océans brûlent, et on regarde ailleurs"
       },
       "France 24": {
         "compte": "FRANCE 24",
         "lues": 15,
-        "retenues": 4,
-        "shorts": 2,
-        "plusRecente": "2026-11-09T10:42:55Z",
-        "exemple": "Climat, déforestation, orpaillage... l'Amazonie lutte pour sa survie • FRANCE 24"
+        "retenues": 3,
+        "shorts": 4,
+        "plusRecente": "2026-11-09T22:21:27Z",
+        "exemple": "Afrique du Sud : la déroute de l'ANC, parti de Nelson Mandela, aux municipales • FRANCE 24"
       },
       "TF1 Info": {
         "compte": "TF1 INFO",
         "lues": 15,
-        "retenues": 0,
+        "retenues": 2,
         "shorts": 7,
-        "plusRecente": "2026-11-09T11:00:23Z",
-        "exemple": "Des éponges magiques !"
+        "plusRecente": "2026-11-09T21:41:21Z",
+        "exemple": "Château de Versailles : un exercice grandeur nature contre les incendies"
       },
       "C dans l'air": {
         "compte": "C dans l'air - France Télévisions",
         "lues": 15,
-        "retenues": 13,
-        "shorts": 1,
-        "plusRecente": "2026-11-08T23:00:28Z",
-        "exemple": "Nouvelles preuves de Mediapart : Bardella peut-il encore tenir ?  -  C dans l’air - 09.10."
+        "retenues": 12,
+        "shorts": 2,
+        "plusRecente": "2026-11-09T21:00:37Z",
+        "exemple": "La chute des valeurs de la tech"
       },
       "C à vous": {
         "compte": "C à vous - France Télévisions",
         "lues": 15,
-        "retenues": 1,
-        "shorts": 9,
-        "plusRecente": "2026-11-09T09:00:03Z",
-        "exemple": "Mélissa Theuriau : \"Le temps des femmes\""
+        "retenues": 6,
+        "shorts": 2,
+        "plusRecente": "2026-11-09T21:30:02Z",
+        "exemple": "Le nouveau Dupontel en grandes pompes (funèbres) - C à Vous l’Intégrale - 09/11/2026"
       },
       "Quotidien": {
         "compte": "Quotidien",
@@ -111,58 +111,58 @@
       "France Inter": {
         "compte": "France Inter",
         "lues": 15,
-        "retenues": 3,
-        "shorts": 4,
-        "plusRecente": "2026-11-09T11:28:01Z",
-        "exemple": "Ce n’est pas forcément une bonne idée de rencontrer son idole - Jean-Baptiste Toussaint"
+        "retenues": 1,
+        "shorts": 10,
+        "plusRecente": "2026-11-09T21:00:23Z",
+        "exemple": "Midterms : faut-il craindre le pire venant de Donald Trump ?"
       },
       "RTL": {
         "compte": "RTL",
         "lues": 15,
         "retenues": 0,
-        "shorts": 10,
-        "plusRecente": "2026-11-09T11:00:40Z",
-        "exemple": "Volgens Sjorleone bestaat het vrouwenwoordenboek uit één woord: nee! 😂 #nederlandsdomste"
+        "shorts": 9,
+        "plusRecente": "2026-11-09T21:00:02Z",
+        "exemple": "Kees spreekt vrouwen die toeristen drogeren, maar dan komt politie! | Kees van der Spek: O"
       },
       "Europe 1": {
         "compte": "Europe 1",
         "lues": 15,
-        "retenues": 7,
+        "retenues": 0,
         "shorts": 0,
-        "plusRecente": "2026-11-09T11:32:54Z",
-        "exemple": "Augmentation du Smic : \"On ne récompense pas la méritocratie au travail\" (auditeur)"
+        "plusRecente": "2026-11-09T22:38:42Z",
+        "exemple": "Europe 1 Nuit - 09/11/2026"
       },
       "RMC": {
         "compte": "RMC",
         "lues": 15,
         "retenues": 9,
         "shorts": 6,
-        "plusRecente": "2026-11-09T10:05:04Z",
-        "exemple": "SMIC : J’ai changé de métier pour gagner 2 000 €, et je suis taxée plein pot !\""
+        "plusRecente": "2026-11-09T17:29:02Z",
+        "exemple": "Charles Consigny : \"Le programme de LFI, c'est quand même une ruine\""
       },
       "Sud Radio": {
         "compte": "Sud Radio",
         "lues": 15,
-        "retenues": 5,
-        "shorts": 0,
-        "plusRecente": "2026-11-09T11:29:04Z",
-        "exemple": "SMIC à 1 500 € : est-ce la bonne solution contre la vie chère ?"
+        "retenues": 0,
+        "shorts": 1,
+        "plusRecente": "2026-11-09T20:13:53Z",
+        "exemple": "XV de France et Top 14 au programme cette semaine"
       },
       "Arte": {
         "compte": "ARTE",
         "lues": 15,
-        "retenues": 0,
-        "shorts": 2,
-        "plusRecente": "2026-11-09T11:00:09Z",
-        "exemple": "Agnes et Amir : Vivre en colocation avec une centenaire | ARTE Regards"
+        "retenues": 1,
+        "shorts": 3,
+        "plusRecente": "2026-11-09T20:00:16Z",
+        "exemple": "Que se passe-t-il avec la jeunesse européenne ? I EUROGUESSR 🇪🇺"
       },
       "i24 News": {
         "compte": "i24NEWS Français",
         "lues": 15,
-        "retenues": 5,
-        "shorts": 0,
-        "plusRecente": "2026-11-08T21:26:46Z",
-        "exemple": "no title"
+        "retenues": 6,
+        "shorts": 1,
+        "plusRecente": "2026-11-09T21:09:25Z",
+        "exemple": "Le COGAT prépare Gaza à l'hiver : 91 000 tentes acheminées"
       },
       "Canal+": {
         "compte": "CANAL+",
@@ -177,34 +177,34 @@
       "BFMTV.com": {
         "sitemapsLus": [
           "index https://www.bfmtv.com/sitemap_index_videos.xml (91)",
-          "https://www.bfmtv.com/sitemaps/videos/2026-0.xml.gz (729 retenue(s))",
+          "https://www.bfmtv.com/sitemaps/videos/2026-0.xml.gz (727 retenue(s))",
           "https://www.bfmtv.com/sitemaps/videos/2025-0.xml.gz (0 retenue(s))",
           "https://www.bfmtv.com/sitemaps/videos/2024-0.xml.gz (0 retenue(s))"
         ],
         "pagesVues": 15000,
-        "pagesRecentes": 1212,
+        "pagesRecentes": 1201,
         "retenues": 350,
         "exemples": [
-          "https://www.bfmtv.com/politique/video-sarah-knafo-deputee-europeenne-reconquete-je-souhaite-qu-eric-zemmour-soit-candidat-a-l-election-presidentielle-donc-non-je-n-irai-pas_VN-202611090314.html",
-          "https://www.bfmtv.com/politique/video-son-combat-est-d-eviter-la-guerre-civile-sarah-knafo-defend-les-multiples-condamnations-pour-incitation-a-la-haine-raciale-d-eric-zemmour_VN-202611090313.html",
-          "https://www.bfmtv.com/politique/la-france-insoumise/video-sarah-knafo-deputee-europeenne-reconquete-accuse-jean-luc-melenchon-de-vouloir-mener-une-revolte-bolchevique_VN-202611090306.html",
-          "https://www.bfmtv.com/politique/video-sarah-knafo-deputee-europeenne-reconquete-on-est-le-peuple-le-plus-taxe-du-monde-mais-on-n-a-pas-les-meilleurs-services-publics-en-retour_VN-202611090301.html"
+          "https://www.bfmtv.com/politique/video-primaire-de-la-droite-et-du-centre-il-faut-qu-elle-ait-lieu-en-janvier-affirme-herve-morin_VN-202611090907.html",
+          "https://www.bfmtv.com/politique/video-presidentielle-2027-teddy-riner-peut-incarner-des-valeurs-de-travail-de-merite-de-respectabilite-enorme-estime-pierre-gattaz-ancien-president-du-medef_VN-202611090886.html",
+          "https://www.bfmtv.com/politique/video-primaire-de-la-droite-et-du-centre-il-faut-que-cette-primaire-ait-lieu-en-janvier-sous-la-houlette-de-gerard-larcher-affirme-herve-morin-president-de-la-region-normandie_VN-202611090875.html",
+          "https://www.bfmtv.com/politique/elections/presidentielle/video-emmanuel-macron-estime-que-la-candidature-de-teddy-riner-ne-peut-qu-apporter-au-pays_VN-202611090867.html"
         ],
         "apercu": [
-          "https://www.bfmtv.com/societe/video-violences-du-17-octobre-son-assureur-lui-rembourse-5-000-euros-sur-ses-50- | 2026-11-09T08:57:26.000Z",
+          "https://www.bfmtv.com/politique/video-primaire-de-la-droite-et-du-centre-il-faut-qu-elle-ait-lieu-en-janvier-a | 2026-11-09T20:26:59.000Z",
           "https://www.bfmtv.com/replay-emissions/bfm-grand-soir/video-31-decembre-en-direct-des-champs-elysees-31-12_VN- | 2025-12-31T23:54:41.000Z",
           "https://www.bfmtv.com/societe/bfmtv-vous-souhaite-une-tres-bonne-annee-2025_VN-202412310602.html | 2024-12-31T23:18:10.000Z"
         ],
-        "duree_s": 5
+        "duree_s": 2
       },
       "TF1+": {
         "sitemapsLus": [
           "index https://www.tf1.fr/sitemaps/sitemap-i.xml (61)",
           "https://www.tf1.fr/sitemaps/sitemap-i1.xml (34 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i2.xml (34 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i3.xml (29 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i4.xml (41 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i5.xml (16 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i2.xml (33 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i3.xml (31 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i4.xml (39 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i5.xml (17 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-dz1.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-dz2.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-bj1.xml (0 retenue(s))",
@@ -217,10 +217,10 @@
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-bf2.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-cm1.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-cm2.xml (0 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i-fr-km1.xml (0 retenue(s))",
-          "https://www.tf1.fr/sitemaps/sitemap-i-fr-km2.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-cg1.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-cg2.xml (0 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i-fr-km1.xml (0 retenue(s))",
+          "https://www.tf1.fr/sitemaps/sitemap-i-fr-km2.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-dj1.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-dj2.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-ga1.xml (0 retenue(s))",
@@ -230,28 +230,28 @@
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-ci1.xml (0 retenue(s))",
           "https://www.tf1.fr/sitemaps/sitemap-i-fr-ci2.xml (0 retenue(s))"
         ],
-        "pagesVues": 885213,
-        "pagesRecentes": 2280,
+        "pagesVues": 886951,
+        "pagesRecentes": 2305,
         "retenues": 154,
         "exemples": [
           "https://www.tf1.fr/lci/la-matinale-618/videos/un-moment-pivot-nous-pouvons-depasser-les-traumatismes-de-ces-deux-ans-une-defaite-a-venir-pour-trump-a-lissue-des-midterms-50883306.html",
           "https://www.tf1.fr/lci/rochebin-soir/videos/rochebin-soir-du-mercredi-4-novembre-2026-46701396.html",
           "https://www.tf1.fr/lci/le-grand-dossier/videos/le-grand-dossier-deroute-de-trump-quelles-lecons-pour-nous-du-mercredi-4-novembre-2026-48042396.html",
-          "https://www.tf1.fr/lci/24h-pujadas-l-info-en-questions/videos/les-partis-pris-marine-le-pen-est-optimiste-vraiment-le-budget-par-ordonnance-lunanimite-en-secret-et-en-serbie-lapprentissage-de-la-democratie-25857997.html"
+          "https://www.tf1.fr/tf1/bonjour-la-matinale-tf1/videos/face-a-alba-ventura-thierry-breton-73020903.html"
         ],
         "apercu": [
           "https://www.tf1.fr/tf1/pour-sarah/news/pour-sarah-francois-rozon-pourquoi-jai-choisi-de-partager-lhistoire-de- | 2019-10-03T23:15:50+02:00",
-          "https://www.tf1.fr/tf1/tournoi-des-six-nations/videos/le-rugby-continue-sur-tf1-et-tf1-64317502.html | 2026-03-15T10:00:00+01:00",
-          "https://www.tf1.fr/tf1/auto-moto/videos/mercedes-gle-coupe-presentation-officielle.html | 2015-01-27T18:13:00+01:00",
-          "https://www.tf1.fr/tf1/la-desalmada/videos/la-desalmada-s01-e18-00054119.html | 2026-10-01T09:00:00+02:00",
-          "https://www.tf1.fr/tfx/la-villa-des-coeurs-brises/videos/la-villa-des-coeurs-brises-saison-02-episode-21-88490 | 2024-04-15T09:00:00+02:00",
+          "https://www.tf1.fr/tf1/ici-tout-commence/videos/ici-tout-commence-du-lundi-13-mai-2024-episode-923-99289050.ht | 2024-05-13T19:11:20+02:00",
+          "https://www.tf1.fr/tmc/quotidien-avec-yann-barthes/videos/m-and-fatoumata-diawara-je-suis-mali-en-live-dans-qu | 2025-03-21T20:30:00+01:00",
+          "https://www.tf1.fr/tf1/bonjour-la-matinale-tf1/videos/rendez-vous-culture-le-cinema-en-mode-karaoke-20174540.h | 2024-10-28T08:40:00+01:00",
+          "https://www.tf1.fr/tf1/telefoot/videos/telefoot-l-after-l-itw-de-charlotte-rencontre-moundir-de-koh-lanta.html | 2017-04-02T12:15:00+02:00",
           "https://www.tf1.fr/fr-dz/tf1/pour-sarah/news/pour-sarah-francois-rozon-pourquoi-jai-choisi-de-partager-lhistoi | 2019-10-03T23:15:50+02:00"
         ],
-        "duree_s": 88
+        "duree_s": 59
       },
       "LCI.fr": {
         "sitemapsLus": [
-          "https://www.tf1info.fr/sitemap-n.xml (23 retenue(s))",
+          "https://www.tf1info.fr/sitemap-n.xml (20 retenue(s))",
           "index https://www.tf1info.fr/sitemap.xml (72)",
           "https://www.tf1info.fr/sitemap-videos-0.xml (0 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-1.xml (0 retenue(s))",
@@ -271,7 +271,7 @@
           "https://www.tf1info.fr/sitemap-videos-22.xml (0 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-23.xml (0 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-24.xml (0 retenue(s))",
-          "https://www.tf1info.fr/sitemap-videos-25.xml (43 retenue(s))",
+          "https://www.tf1info.fr/sitemap-videos-25.xml (37 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-26.xml (34 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-3.xml (0 retenue(s))",
           "https://www.tf1info.fr/sitemap-videos-4.xml (0 retenue(s))",
@@ -282,24 +282,24 @@
           "https://www.tf1info.fr/sitemap-videos-9.xml (0 retenue(s))",
           "https://www.tf1info.fr/sitemap-contents-0.xml (0 retenue(s))"
         ],
-        "pagesVues": 272202,
-        "pagesRecentes": 141,
-        "retenues": 100,
+        "pagesVues": 272231,
+        "pagesRecentes": 136,
+        "retenues": 91,
         "exemples": [
-          "https://www.tf1info.fr/politique/elections/presidentielle/le-judoka-et-champion-olympique-teddy-riner-est-candidat-a-l-election-presidentielle-2027-2474763.html",
-          "https://www.tf1info.fr/politique/elections/presidentielle/la-france-est-le-pays-le-moins-raciste-au-monde-assure-marine-le-pen-a-l-emission-americaine-60-minutes-2474708.html",
-          "https://www.tf1info.fr/politique/elections/presidentielle/video-presidentielle-2027-une-guerre-d-ego-emmene-tout-le-monde-vers-le-fond-deplore-sur-lci-la-deputee-epr-olga-givernet-qui-plaide-pour-une-primaire-de-la-droite-et-du-centre-2474621.html",
-          "https://www.tf1info.fr/politique/elections/presidentielle/presidentielle-2027-laurent-wauquiez-reclame-un-candidat-unique-a-droite-avant-noel-2474624.html"
+          "https://www.tf1info.fr/politique/videos/video-marine-tondelier-invitee-du-20h-de-tf1-83165-2474916.html",
+          "https://www.tf1info.fr/politique/videos/video-presidentielle-je-ne-me-desisterai-pas-je-ne-disparaitrai-pas-d-un-coup-de-l-election-presidentielle-par-contre-les-ecologistes-sont-prets-a-rejoindre-une-coalition-a-nous-depasser-pour-quelque-chose-de-plus-grand-que-nous-marine-tondelier-92845-2474898.html",
+          "https://www.tf1info.fr/politique/elections/presidentielle/teddy-riner-candidat-a-la-presidentielle-cela-ne-peut-qu-apporter-au-pays-reagit-emmanuel-macron-2474872.html",
+          "https://www.tf1info.fr/politique/elections/presidentielle/verif-pas-de-discriminations-en-france-selon-marine-le-pen-ce-que-disent-les-dernieres-enquetes-2474781.html"
         ],
         "apercu": [
-          "https://www.tf1info.fr/international/video-attentat-en-pologne-qui-sont-les-heros-qui-ont-neutralise-l-assaill | 2026-11-09T12:37:53.479+01:00",
+          "https://www.tf1info.fr/politique/videos/video-marine-tondelier-invitee-du-20h-de-tf1-83165-2474916.html | 2026-11-09T23:25:15.000+01:00",
           "https://www.tf1info.fr/politique/revue-de-presse-de-renaud-pila-la-gauche-qui-inquiete-1125957.html | 2014-02-17T10:34:00.000+01:00",
           "https://www.tf1info.fr/sciences-et-innovation/video-explore-hubble-fete-ses-28-ans-le-telescope-spatial-envoie | 2018-04-25T10:24:10.265+02:00",
           "https://www.tf1info.fr/regions/video-quand-la-reine-ecrivait-a-des-ecoliers-bretons-2232281.html | 2022-09-14T13:24:19.000+02:00",
           "https://www.tf1info.fr/international/intensification-des-combats-pas-de-decision-sur-les-livraisons-de-chars-l | 2023-01-21T07:41:30.186+01:00",
           "https://www.tf1info.fr/justice-faits-divers/hauts-de-seine-asnieres-l-employee-d-une-creche-soupconnee-d-avoir | 2023-06-02T17:20:30.462+02:00"
         ],
-        "duree_s": 70
+        "duree_s": 49
       },
       "LCP.fr": {
         "sitemapsLus": [
@@ -312,11 +312,11 @@
           "https://lcp.fr/sitemap.xml?page=6 (0 retenue(s))",
           "https://lcp.fr/sitemap.xml?page=7 (0 retenue(s))",
           "https://lcp.fr/sitemap.xml?page=8 (14 retenue(s))",
-          "https://lcp.fr/sitemap.xml?page=9 (59 retenue(s))"
+          "https://lcp.fr/sitemap.xml?page=9 (58 retenue(s))"
         ],
-        "pagesVues": 17513,
-        "pagesRecentes": 454,
-        "retenues": 74,
+        "pagesVues": 17523,
+        "pagesRecentes": 456,
+        "retenues": 73,
         "exemples": [
           "https://lcp.fr/programmes/questions-au-gouvernement/questions-au-gouvernement-8419",
           "https://lcp.fr/programmes/la-politique-et-moi/marc-fesneau-depute-du-cher-president-du-groupe-democrates-318042",
@@ -327,24 +327,24 @@
           "https://lcp.fr/ | sans date",
           "https://lcp.fr/actualites/loi-immigration-qu-est-ce-que-la-notion-de-cavalier-legislatif-qui-a-conduit-a-la | 2024-01-26T18:07:46+01:00",
           "https://lcp.fr/actualites/audiovisuel-public-delphine-ernotte-face-aux-accusations-et-reglements-de-comptes-po | 2026-04-08T20:30:44+02:00",
-          "https://lcp.fr/programmes/ca-vous-regarde/iran-infrequentable-mais-tellement-utile-6592 | 2026-02-04T00:25:01+01:00",
-          "https://lcp.fr/programmes/audition-publique/gilles-le-gendre-president-du-groupe-la-republique-en-marche-a-l | 2020-12-18T16:11:26+01:00",
-          "https://lcp.fr/programmes/sommets-dans-le-secret-des-negociations-europeennes/sommets-dans-le-secret-des-0 | 2024-01-15T00:35:01+01:00"
+          "https://lcp.fr/programmes/questions-au-gouvernement/questions-au-gouvernement-6578 | 2026-02-03T00:30:01+01:00",
+          "https://lcp.fr/programmes/parlement-hebdo/guillaume-garot-parlement-hebdo-01022019-11173 | 2020-06-30T16:09:26+02:00",
+          "https://lcp.fr/programmes/circo/justine-benin-le-combat-pour-l-eau-en-guadeloupe-49955 | 2023-09-16T00:35:02+02:00"
         ],
         "erreurs": [
           "https://lcp.fr/sitemap.xml.gz : HTTP Error 404: Not Found",
           "https://lcp.fr/sitemap_index.xml : HTTP Error 404: Not Found"
         ],
-        "duree_s": 25
+        "duree_s": 13
       },
       "Public Sénat": {
         "sitemapsLus": [
-          "https://www.publicsenat.fr/news-sitemap.xml (2 retenue(s))",
+          "https://www.publicsenat.fr/news-sitemap.xml (6 retenue(s))",
           "index https://www.publicsenat.fr/sitemap_index.xml (60)",
           "https://www.publicsenat.fr/post-sitemap.xml (0 retenue(s))",
           "https://www.publicsenat.fr/post-sitemap43.xml (0 retenue(s))",
           "https://www.publicsenat.fr/show-sitemap.xml (0 retenue(s))",
-          "https://www.publicsenat.fr/show-sitemap11.xml (31 retenue(s))",
+          "https://www.publicsenat.fr/show-sitemap11.xml (30 retenue(s))",
           "https://www.publicsenat.fr/thematic-sitemap.xml (0 retenue(s))",
           "https://www.publicsenat.fr/program-sitemap.xml (0 retenue(s))",
           "https://www.publicsenat.fr/show-sitemap10.xml (151 retenue(s))",
@@ -370,28 +370,28 @@
           "https://www.publicsenat.fr/post-sitemap16.xml (0 retenue(s))",
           "https://www.publicsenat.fr/post-sitemap17.xml (0 retenue(s))"
         ],
-        "pagesVues": 22142,
+        "pagesVues": 22152,
         "pagesRecentes": 605,
-        "retenues": 184,
+        "retenues": 187,
         "exemples": [
-          "https://www.publicsenat.fr/emission/le-grand-jury-rtl-public-senat-ouest-france-m6/jean-noel-barrot-invite-du-grand-jury-e10",
-          "https://www.publicsenat.fr/emission/documentaire/j-d-vance-la-revanche-dune-amerique-e0",
-          "https://www.publicsenat.fr/emission/bonjour-chez-vous/ian-brossat-on-a-a-faire-a-des-gouvernements-qui-sont-incapables-de-dialoguer-avec-les-gens-e0",
-          "https://www.publicsenat.fr/emission/bonjour-chez-vous/michel-barnier-il-faut-retablir-lordre-et-lautorite-e0"
+          "https://www.publicsenat.fr/emission/bonjour-chez-vous/bonjour-chez-vous-du-9-novembre-2026-e36",
+          "https://www.publicsenat.fr/emission/bonjour-chez-vous/qui-mettra-de-leau-dans-le-vin-de-jean-luc-melenchon-e0",
+          "https://www.publicsenat.fr/emission/bonjour-chez-vous/emmanuel-maurel-raphael-glucksmann-est-a-sa-place-dans-les-manifestations-e0",
+          "https://www.publicsenat.fr/emission/le-grand-jury-rtl-public-senat-ouest-france-m6/jean-noel-barrot-invite-du-grand-jury-e10"
         ],
         "apercu": [
-          "https://www.publicsenat.fr/actualites/international/rwanda-le-genocide-a-ete-rendu-possible-par-lanalphabetisa | 2026-11-08T14:30:00+01:00",
-          "https://www.publicsenat.fr/actualites | 2026-11-09T08:26:11+00:00",
+          "https://www.publicsenat.fr/actualites/politique/nous-decouvrons-lobstruction-calendaire-au-senat-le-groupe-rn- | 2026-11-09T16:45:44+01:00",
+          "https://www.publicsenat.fr/actualites | 2026-11-09T22:31:36+00:00",
           "https://www.publicsenat.fr/actualites/politique/retraite-a-65-ans-la-strategie-du-courage-politique-dedouard-p | 2026-09-30T15:59:21+00:00",
           "https://www.publicsenat.fr/emission/100-senat/100-senat-debat-retraites-e237-2 | 2023-03-10T19:40:46+00:00",
-          "https://www.publicsenat.fr/emission/bonjour-chez-vous/ian-brossat-on-a-a-faire-a-des-gouvernements-qui-sont-in | 2026-11-09T08:50:42+00:00",
+          "https://www.publicsenat.fr/emission/100-senat/situation-economique-de-la-france-audition-dorganisations-patron | 2026-11-09T19:20:18+00:00",
           "/actualites/culture | 2026-10-23T14:43:39+00:00"
         ],
-        "duree_s": 78
+        "duree_s": 64
       },
       "france.tv": {
         "sitemapsLus": [
-          "index https://www.france.tv/sitemaps/programs_index.xml (5607)",
+          "index https://www.france.tv/sitemaps/programs_index.xml (5622)",
           "emission-politique-la-suite_l-emission-politique-la-suite-saison-3.xml (0 retenue(s))",
           "rogram/france-2_l-emission-politique_l-emission-politique-saison-3.xml (0 retenue(s))",
           ".france.tv/sitemaps/program/france-2_l-emission-politique_saison-2.xml (0 retenue(s))",
@@ -403,8 +403,8 @@
           "nce.tv/sitemaps/program/france-2_flash-special-presidentielle-2022.xml (0 retenue(s))",
           "ttps://www.france.tv/sitemaps/program/france-2_presidentielle-2017.xml (0 retenue(s))",
           "ttps://www.france.tv/sitemaps/program/france-2_presidentielle-2022.xml (0 retenue(s))",
-          "aps/program/france-5_c-a-vous-la-suite_c-a-vous-la-suite-saison-18.xml (1 retenue(s))",
-          "ww.france.tv/sitemaps/program/france-5_c-a-vous_c-a-vous-saison-18.xml (20 retenue(s))",
+          "aps/program/france-5_c-a-vous-la-suite_c-a-vous-la-suite-saison-18.xml (2 retenue(s))",
+          "ww.france.tv/sitemaps/program/france-5_c-a-vous_c-a-vous-saison-18.xml (25 retenue(s))",
           "ogram/france-5_c-politique-la-suite_c-politique-la-suite-saison-18.xml (3 retenue(s))",
           "nce.tv/sitemaps/program/france-5_c-politique_c-politique-saison-18.xml (3 retenue(s))",
           "ps://www.france.tv/sitemaps/program/france-5_c-politique_saison-17.xml (0 retenue(s))",
@@ -412,24 +412,24 @@
           "ww.france.tv/sitemaps/program/france-5_c-a-vous-la-suite_saison-17.xml (0 retenue(s))",
           "ww.france.tv/sitemaps/program/france-5_c-a-vous-la-suite_saison-16.xml (0 retenue(s))",
           "w.france.tv/sitemaps/program/france-5_c-ce-soir_c-ce-soir-saison-7.xml (5 retenue(s))",
-          "https://www.france.tv/sitemaps/program/france-5_c-a-vous.xml (21 retenue(s))",
-          "https://www.france.tv/sitemaps/program/france-5_c-a-vous-la-suite.xml (1 retenue(s))",
+          "https://www.france.tv/sitemaps/program/france-5_c-a-vous.xml (25 retenue(s))",
+          "https://www.france.tv/sitemaps/program/france-5_c-a-vous-la-suite.xml (2 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-5_c-ce-soir.xml (5 retenue(s))",
-          "https://www.france.tv/sitemaps/program/france-5_c-dans-l-air.xml (8 retenue(s))",
+          "https://www.france.tv/sitemaps/program/france-5_c-dans-l-air.xml (10 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-5_c-politique.xml (3 retenue(s))",
           "tps://www.france.tv/sitemaps/program/france-5_c-politique-la-suite.xml (3 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-2_cash-investigation.xml (0 retenue(s))",
           "tps://www.france.tv/sitemaps/program/france-2_complement-d-enquete.xml (3 retenue(s))",
           "https://www.france.tv/sitemaps/program/france-2_debat.xml (0 retenue(s))"
         ],
-        "pagesVues": 5127,
-        "pagesRecentes": 312,
-        "retenues": 76,
+        "pagesVues": 5142,
+        "pagesRecentes": 344,
+        "retenues": 89,
         "exemples": [
+          "https://www.france.tv/france-5/c-a-vous-la-suite/c-a-vous-la-suite-saison-18/9076000-raphael-glucksmann-decouvre-l-internet-l-abc-de-bertrand-chameroy-09-11-2026.html",
           "https://www.france.tv/france-5/c-a-vous-la-suite/c-a-vous-la-suite-saison-18/9055252-le-president-de-la-republique-un-monarque-republicain-le-5-5-pop-de-lorrain-senechal.html",
-          "https://www.france.tv/france-5/c-a-vous/c-a-vous-saison-18/9073285-midterms-isole-donald-trump-encore-plus-dangereux.html",
-          "https://www.france.tv/france-5/c-a-vous/c-a-vous-saison-18/9068203-guerre-en-ukraine-vers-un-grand-accord-trump-poutine-le-5-5-d-amandine-begot.html",
-          "https://www.france.tv/france-5/c-a-vous/c-a-vous-saison-18/9068197-melenchon-capitalise-t-il-sur-la-crise.html"
+          "https://www.france.tv/france-5/c-a-vous/c-a-vous-saison-18/9075874-trump-sa-longue-interview-a-la-tele-americaine.html",
+          "https://www.france.tv/france-5/c-a-vous/c-a-vous-saison-18/9075826-presidentielle-2027-teddy-riner-une-candidature-serieuse.html"
         ],
         "apercu": [
           "https://www.france.tv/france-2/l-emission-politique-la-suite/l-emission-politique-la-suite-saison-3/920215-l-e | 2025-09-17T10:16:09+02:00",
@@ -439,7 +439,7 @@
           "https://www.france.tv/france-2/l-emission-politique/saison-1/141887-france-la-nouvelle-donne.html | 2025-09-17T11:12:45+02:00",
           "https://www.france.tv/france-2/l-emission-politique/l-emission-politique-saison-3/985703-europeennes-le-debat- | 2025-09-17T10:13:55+02:00"
         ],
-        "duree_s": 30
+        "duree_s": 25
       },
       "arte.tv": {
         "sitemapsLus": [
@@ -460,11 +460,11 @@
           "https://www.arte.tv/fr/videos/136148-000-A/hito-steyerl-papesse-de-l-art-numerique/ | 2026-11-08T18:22:06+00:00",
           "https://faq.arte.tv/hc/de | 2026-10-20T14:26:04Z"
         ],
-        "duree_s": 8
+        "duree_s": 9
       },
       "CNews.fr": {
         "sitemapsLus": [
-          "https://www.cnews.fr/googlenews.xml (26 retenue(s))",
+          "https://www.cnews.fr/googlenews.xml (18 retenue(s))",
           "index https://www.cnews.fr/sitemap.xml (222)",
           "https://www.cnews.fr/sitemap.xml?page=1 (0 retenue(s))",
           "https://www.cnews.fr/sitemap.xml?page=2 (0 retenue(s))",
@@ -474,13 +474,13 @@
           "https://www.cnews.fr/sitemap.xml?page=6 (0 retenue(s))"
         ],
         "pagesVues": 12100,
-        "pagesRecentes": 68,
-        "retenues": 26,
+        "pagesRecentes": 71,
+        "retenues": 18,
         "exemples": [
-          "https://www.cnews.fr/france/2026-11-09/jai-demande-aux-ministres-de-sengager-avec-beaucoup-de-sincerite-confie-sebastien",
-          "https://www.cnews.fr/monde/2026-11-09/nous-avons-expulse-des-personnes-qui-occupaient-de-bons-emplois-donald-trump",
-          "https://www.cnews.fr/france/2026-11-09/presidentielle-2027-le-judoka-teddy-riner-annonce-sa-candidature-1950691",
-          "https://www.cnews.fr/france/2026-11-09/ledito-de-pascal-praud-jean-luc-melenchon-apporte-un-peu-de-baume-au-coeur-aux"
+          "https://www.cnews.fr/videos/france/2026-11-09/jean-luc-melenchon-veut-restreindre-toutes-les-libertes-denonce-jules",
+          "https://www.cnews.fr/france/2026-11-09/teddy-riner-candidat-la-presidentielle-de-2027-cela-ne-peut-quapporter-au-pays",
+          "https://www.cnews.fr/france/2026-11-09/retraite-60-ans-selon-jean-luc-melenchon-plusieurs-responsables-de-gauche",
+          "https://www.cnews.fr/france/2026-11-09/jai-demande-aux-ministres-de-sengager-avec-beaucoup-de-sincerite-confie-sebastien"
         ],
         "erreurs": [
           "https://www.cnews.fr/sitemap-news.xml : HTTP Error 404: Not Found",
@@ -488,14 +488,14 @@
           "https://www.cnews.fr/news-sitemap.xml : HTTP Error 404: Not Found"
         ],
         "apercu": [
-          "https://www.cnews.fr/france/2026-11-09/jai-demande-aux-ministres-de-sengager-avec-beaucoup-de-sincerite-confie | 2026-11-09T11:48:11+00:00",
+          "https://www.cnews.fr/videos/france/2026-11-09/jean-luc-melenchon-veut-restreindre-toutes-les-libertes-denonce- | 2026-11-09T22:17:54+00:00",
           "https://www.cnews.fr/ | sans date",
           "https://www.cnews.fr/politique/2012-03-13/parrainages-les-candidats-qui-les-ont-ceux-qui-les-cherchent-encore- | 2012-03-13T14:56:32+01:00",
           "https://www.cnews.fr/france/2012-03-28/10-apres-nanterre-rebaptise-ses-rues-11550 | 2012-03-28T09:47:34+02:00",
           "https://www.cnews.fr/france/2012-04-10/attentats-du-flnc-16-ans-requis-lencontre-de-pasqualaggi-16154 | 2012-04-10T23:41:02+02:00",
           "https://www.cnews.fr/france/2012-04-25/quelque-150-feministes-appellent-voter-francois-hollande-20988 | 2012-04-25T11:30:01+02:00"
         ],
-        "duree_s": 7
+        "duree_s": 3
       },
       "M6+": {
         "sitemapsLus": [
@@ -530,28 +530,27 @@
           "https://www.m6.fr/sitemap-625.xml (0 retenue(s))",
           "https://www.m6.fr/sitemap-624.xml (0 retenue(s))"
         ],
-        "pagesVues": 2609,
-        "pagesRecentes": 191,
+        "pagesVues": 2630,
+        "pagesRecentes": 192,
         "retenues": 5,
         "exemples": [
           "https://www.m6.fr/66-minutes-p_825",
+          "https://www.m6.fr/enquete-exclusive-p_831",
           "https://www.m6.fr/zone-interdite-p_845",
-          "https://www.m6.fr/66-minutes-grand-format-p_28004",
-          "https://www.m6.fr/enquete-exclusive-p_831"
+          "https://www.m6.fr/66-minutes-grand-format-p_28004"
         ],
         "apercu": [
-          "https://www.m6.fr/les-mysteres-de-lecole-de-gendarmerie-p_27477 | 2025-11-06T22:42:34.000Z",
-          "https://www.m6.fr/enquete-exclusive-p_831/forcenes-retranches-a-domicile-la-france-qui-craque-c_13061288 | 2026-11-09T01:47+00:00",
-          "https://www.m6.fr/alias-p_26578/s1-e11-zones-dombre-c_13102759 | sans date",
-          "https://www.m6.fr/alias-p_26578/s3-e20-protocole-enfer-c_13102810 | sans date",
-          "https://www.m6.fr/pokemon-p_17017/les-epreuves-eliminatoires-c_13065678 | sans date",
-          "https://www.m6.fr/alias-p_26578/s5-e11-instinct-maternel-c_13102786 | sans date"
+          "https://www.m6.fr/wanted-attrape-moi-si-tu-peux-p_28540 | 2026-11-05T23:13:51.000Z",
+          "https://www.m6.fr/capital-p_860/manger-francais-bon-et-pas-cher-oui-cest-possible-c_13202915 | 2026-11-08T11:11+00:00",
+          "https://www.m6.fr/alias-p_26578/s2-e12-maitre-chanteur-c_13102763 | sans date",
+          "https://www.m6.fr/pokemon-p_17017/un-entrainement-intensif-c_13065733 | sans date",
+          "https://www.m6.fr/alias-p_26578/s5-e3-dans-lombre-c_13102831 | sans date",
+          "https://www.m6.fr/alias-p_26578/s5-e17-un-sentiment-deternite-c_13102842 | sans date"
         ],
-        "duree_s": 23
+        "duree_s": 4
       },
       "myCANAL": {
         "sitemapsLus": [
-          "index https://www.canalplus.com/sitemaps.xml (109)",
           "index https://www.canalplus.com/fr/sitemaps-h/ (49)",
           "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_1.xml (23 retenue(s))",
           "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_2.xml (30 retenue(s))",
@@ -562,16 +561,20 @@
           "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_7.xml (0 retenue(s))",
           "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_8.xml (0 retenue(s))",
           "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_9.xml (0 retenue(s))",
-          "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_10.xml (5 retenue(s))"
+          "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_10.xml (5 retenue(s))",
+          "https://www.canalplus.com/fr/sitemaps-h/sitemap_fr_11.xml (18 retenue(s))"
         ],
-        "pagesVues": 32289,
-        "pagesRecentes": 9665,
-        "retenues": 97,
+        "pagesVues": 36293,
+        "pagesRecentes": 10939,
+        "retenues": 115,
         "exemples": [
           "https://www.canalplus.com/decouverte/brigitte-macron-un-roman-francais/h/10002598_40099",
           "https://www.canalplus.com/actualites/dimanche-en-politique---champagne-ardenne/h/10445873_50027",
           "https://www.canalplus.com/actualites/dimanche-en-politique---lorraine/h/10445874_50027",
           "https://www.canalplus.com/actualites/dimanche-en-politique---hauts-de-france/h/10446036_50027"
+        ],
+        "erreurs": [
+          "https://www.canalplus.com/sitemaps.xml : syntax error: line 1, column 0"
         ],
         "apercu": [
           "https://www.canalplus.com/telefilms/le-prix-du-secret/h/10000330_40099 | sans date",
@@ -581,29 +584,29 @@
           "https://www.canalplus.com/actualites/mtv-movie-tv-awards-2023/h/21723100_50662 | sans date",
           "https://www.canalplus.com/decouverte/laffaire-flactif-une-jalousie-meurtriere/h/24796295_50001 | sans date"
         ],
-        "duree_s": 32
+        "duree_s": 41
       }
     },
     "lues": 285,
-    "nouvelles": 1402,
-    "total": 1935
+    "nouvelles": 1404,
+    "total": 1951
   },
-  "nombreReplays": 1935,
+  "nombreReplays": 1951,
   "parSection": {
-    "politique": 1911,
+    "politique": 1927,
     "documentaire": 24
   },
   "parPlateforme": {
-    "M6+": 5,
-    "myCANAL": 112,
-    "CNews.fr": 210,
+    "myCANAL": 127,
+    "LCP.fr": 77,
+    "TF1+": 160,
+    "LCI.fr": 97,
     "YouTube": 400,
-    "LCP.fr": 80,
-    "LCI.fr": 96,
-    "TF1+": 159,
-    "Public Sénat": 216,
-    "france.tv": 46,
+    "CNews.fr": 205,
+    "france.tv": 54,
     "BFMTV.com": 350,
-    "arte.tv": 261
+    "Public Sénat": 217,
+    "M6+": 5,
+    "arte.tv": 259
   }
 }
